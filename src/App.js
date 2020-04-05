@@ -1,15 +1,42 @@
 import React from "react";
-import logo from "./logo.svg";
 import axios from "axios";
+import { ThemeProvider } from "styled-components";
+import theme from "./styled-components/theme";
+import { Box, Button, Flex, Text } from "./styled-components/StyledComponents";
 import "./App.css";
-// hi
+
 function App() {
   return (
-    <div className="App">
-      <button onClick={() => axios.get("https://tranbackend.herokuapp.com/")}>
-        Click me
-      </button>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Box>
+        <Box
+          color="white"
+          bg="navy"
+          mb="3"
+          p="2"
+          fontSize={4}
+          fontWeight={4}
+          letterSpacing={0}
+          width="100%"
+          textAlign="center"
+        >
+          TranScripture
+        </Box>
+        <Flex flexDirection="row">
+          <Button
+            color="white"
+            bg="gray"
+            mx="2"
+            width={1}
+            height={0}
+            onClick={() => axios.get("https://tranbackend.herokuapp.com/")}
+          >
+            Click me
+          </Button>
+          <Text fontSize={3}>Hello world</Text>
+        </Flex>
+      </Box>
+    </ThemeProvider>
   );
 }
 
