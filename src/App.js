@@ -6,9 +6,9 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <button
-        onClick={axios.get("https://tranbackend.herokuapp.com/")}
-      ></button>
+      <button onClick={() => axios.get("https://tranbackend.herokuapp.com/")}>
+        Click me
+      </button>
     </div>
   );
 }
