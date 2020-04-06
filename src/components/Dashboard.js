@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "../styled-components/theme";
+import MainPage from "./MainPage";
+import { Button } from "@material-ui/core";
 import {
-  Box,
-  Button,
-  Card,
+  Heading,
   NavBar,
   Link,
+  Text,
 } from "../styled-components/StyledComponents";
 import "../App.css";
 
@@ -20,14 +19,19 @@ function Dashboard() {
         <Link href="/">TranScripture</Link>
         <Button onClick={handleClick}>Log Out</Button>
       </NavBar>
-      <h1>deeznuts</h1>
-      <p>{localStorage.getItem("code")}</p>
-      <Box display="flex" justifyContent="space-around">
-        <Card>Card Uno</Card>
-        <Card>Card Dos</Card>
-        <Card>Card Tres</Card>
-      </Box>
-      <button onClick={handleClick}>Log Out</button>
+      <Heading
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        alignItems="center"
+        fontSize="24pt"
+      >
+        <Text letterSpacing={1} m={2} fontSize="24pt">
+          TranScripture{" "}
+        </Text>{" "}
+        Dashboard
+      </Heading>
+      <MainPage />
     </div>
   );
 }

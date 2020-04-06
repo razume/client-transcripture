@@ -1,6 +1,16 @@
 export default {
   colors: {
-    black: "#000e1a",
+    // lightest values at color[0], get darker with each increase in index
+    gray: [
+      "#e2e2e2",
+      "#c5c5c5",
+      "#a7a7a7",
+      "#8a8a8a",
+      "#767676",
+      "#4f4f4f",
+      "#4f4f4f",
+      "#3b3b3b",
+    ],
     white: "#fff",
     blue: "#007ce0",
     navy: "#004175",

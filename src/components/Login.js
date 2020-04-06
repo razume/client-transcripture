@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "../styled-components/theme";
-import { Box, Card, Link, NavBar } from "../styled-components/StyledComponents";
+
+import {
+  Box,
+  Card,
+  Heading,
+  Link,
+  NavBar,
+} from "../styled-components/StyledComponents";
 import "../App.css";
 import axios from "axios";
 
@@ -47,24 +52,22 @@ function Login() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Box>
-        <NavBar color="white" mb="3" p="2">
-          <Link href="/">TranScripture!</Link>
-          <Link href={url}>Login</Link>
-        </NavBar>
-        <Box display="flex" justifyContent="space-around">
-          <Card>Card 1</Card>
-          <Card>Card 2</Card>
-          <Card>Card 3</Card>
-        </Box>
-      </Box>{" "}
-      <div>
-        <a href={url}>
-          <button>Click Here</button>
-        </a>
-      </div>
-    </ThemeProvider>
+    <Box>
+      <NavBar color="white" mb="3" p="2">
+        <Link href="/">TranScripture</Link>
+        <Link href={url}>Login</Link>
+      </NavBar>
+      <Heading textAlign="center" fontWeight="700">
+        Landing Page - Not Logged In
+      </Heading>
+      <Box display="flex" justifyContent="space-around">
+        <Card>Card 1</Card>
+        <Card>Card 2</Card>
+        <Card>Card 3</Card>
+      </Box>
+
+      <div></div>
+    </Box>
   );
 }
 
