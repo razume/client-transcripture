@@ -4,6 +4,7 @@ export default {
     white: "#fff",
     blue: "#007ce0",
     navy: "#004175",
+    bgAccent: "#33E0FF",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   sizes: ["2.5rem", "5rem", "8rem", "12rem"],
