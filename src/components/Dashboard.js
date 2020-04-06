@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
-import MainPage from "./MainPage";
-import { Button } from "@material-ui/core";
+import React, { useEffect } from "react"
+import MainPage from "./MainPage"
+import { Button } from "@material-ui/core"
 import {
   Heading,
   NavBar,
   Link,
   Text,
-} from "../styled-components/StyledComponents";
-import "../App.css";
+} from "../styled-components/StyledComponents"
+import "../App.css"
 
-function Dashboard() {
+function Dashboard({ setAuthCode }) {
   const handleClick = () => {
-    localStorage.removeItem("code");
-  };
+    localStorage.removeItem("code")
+    setAuthCode("")
+    window.location.href = "http://localhost:3000"
+  }
   return (
     <div>
       <NavBar>
@@ -33,7 +35,7 @@ function Dashboard() {
       </Heading>
       <MainPage />
     </div>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard
