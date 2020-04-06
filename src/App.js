@@ -9,8 +9,10 @@ const clientID = "wvaVD6itTme4P9YBmPMZkg"
 
 if (process.env.NODE_ENV === "development") {
   var redirectURL = "http://localhost:3000/"
+  var posturl = "http://localhost:5000"
 } else {
   var redirectURL = "https://client-transcipture.herokuapp.com/"
+  var posturl ="https://tranbackend.herokuapp.com"
 }
 
 console.log("redirectURL", redirectURL)
@@ -27,7 +29,7 @@ function App() {
       console.log("Code:", code)
 
 
-      axios.post('http://localhost:5000/api/auth', {
+      axios.post(`${posturl}/api/auth`, {
         code: code
       })
       .then(function (response) {
