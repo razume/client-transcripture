@@ -1,7 +1,11 @@
-Trello --> https://trello.com/b/FrUwnrJ4/dank-tank-capstone
-Backend GitHub --> https://github.com/tannerbyers/TranBackend
+## Trello
+https://trello.com/b/FrUwnrJ4/dank-tank-capstone
 
-Prod --> https://client-transcipture.herokuapp.com/
+## GitHub backend
+https://github.com/tannerbyers/TranBackend
+
+## Prod
+https://client-transcipture.herokuapp.com/
 
 ## Available Scripts
 
