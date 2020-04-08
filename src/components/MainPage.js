@@ -8,8 +8,32 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SettingsIcon from "@material-ui/icons/Settings";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import FolderIcon from "@material-ui/icons/Folder";
+import axios from "axios";
 
-const MainPage = () => {
+const MainPage = ({ posturl }) => {
+
+  const requestMeetings = () => {
+    axios.get(posturl + "/api/recordings")
+      .then(function (response) {
+        // handle success
+        let videoLocation = document.querySelector("#PutSampleVideo")
+        console.log(videoLocation)
+        var video = document.createElement('video');
+        video.src = response.data;
+        video.controls = true; 
+        video.style.width = "200px"
+        videoLocation.append(video)       
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
   return (
     <Box display="flex" justifyContent="center">
       <Box display="flex" flexDirection="row" width="95%">
@@ -21,7 +45,7 @@ const MainPage = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <ExpansionPanel>
+          <ExpansionPanel onClick={requestMeetings}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -32,7 +56,7 @@ const MainPage = () => {
               </Box>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Box width="30rem">
+              <Box width="30rem" id="PutSampleVideo">
                 Access all the transcripts of your recorded Zoom meetings
               </Box>
             </ExpansionPanelDetails>
