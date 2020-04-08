@@ -8,8 +8,25 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SettingsIcon from "@material-ui/icons/Settings";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import FolderIcon from "@material-ui/icons/Folder";
+import axios from "axios";
 
-const MainPage = () => {
+const MainPage = ({posturl}) => {
+
+  const requestMeetings = () => {
+    axios.get( posturl+ "/api/recordings")
+    .then(function (response) {
+      // handle success
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
+    });
+  }
+
   return (
     <Box display="flex" justifyContent="center">
       <Box display="flex" flexDirection="row" width="95%">
@@ -21,7 +38,7 @@ const MainPage = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <ExpansionPanel>
+          <ExpansionPanel onClick={requestMeetings}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"

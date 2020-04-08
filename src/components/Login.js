@@ -10,25 +10,15 @@ import {
 import "../App.css";
 import axios from "axios";
 
-const clientID = "wvaVD6itTme4P9YBmPMZkg";
+const Login = ({ redirectURL, clientID, posturl }) => {
 
-// Set Dev variables and Prod Variables
-
-if (process.env.NODE_ENV === "development") {
-  var redirectURL = "http://localhost:3000/";
-  var posturl = "http://localhost:5000";
-} else {
-  var redirectURL = "https://client-transcipture.herokuapp.com/";
-  var posturl = "https://tranbackend.herokuapp.com";
-}
-
-console.log("redirectURL", redirectURL);
+  console.log("redirectURL", redirectURL);
 const url =
   "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
   clientID +
   "&redirect_uri=" +
   redirectURL;
-function Login() {
+
   useEffect(() => {
     if (window.location.href.indexOf("code") > -1) {
       console.log(window.location.href);

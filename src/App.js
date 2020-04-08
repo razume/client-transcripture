@@ -5,7 +5,18 @@ import "./App.css"
 import Login from "./components/Login"
 import Dashboard from "./components/Dashboard"
 
-const clientID = "wvaVD6itTme4P9YBmPMZkg"
+const clientID = "wvaVD6itTme4P9YBmPMZkg";
+
+// Set Dev variables and Prod Variables
+
+if (process.env.NODE_ENV === "development") {
+  var redirectURL = "http://localhost:3000/";
+  var posturl = "http://localhost:5000";
+} else {
+  var redirectURL = "https://client-transcipture.herokuapp.com/";
+  var posturl = "https://tranbackend.herokuapp.com";
+}
+
 
 function App() {
   const [authCode, setAuthCode] = useState("")
@@ -30,7 +41,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      {authCode ? <Dashboard setAuthCode={setAuthCode} /> : <Login />}
+      {authCode ? <Dashboard setAuthCode={setAuthCode} clientID={clientID} redirectURL={redirectURL} posturl={posturl} /> : <Login clientID={clientID} redirectURL={redirectURL} posturl={posturl} />}
     </ThemeProvider>
   )
 }
