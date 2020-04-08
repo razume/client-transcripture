@@ -9,11 +9,11 @@ import {
 } from "../styled-components/StyledComponents"
 import "../App.css"
 
-function Dashboard({ setAuthCode, posturl }) {
+function Dashboard({ setAuthCode, posturl, redirectURL }) {
   const handleClick = () => {
     localStorage.removeItem("code")
     setAuthCode("")
-    window.location.href = "http://localhost:3000"
+    window.location.href = redirectURL
   }
   return (
     <div>

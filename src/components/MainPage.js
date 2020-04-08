@@ -10,21 +10,28 @@ import EqualizerIcon from "@material-ui/icons/Equalizer";
 import FolderIcon from "@material-ui/icons/Folder";
 import axios from "axios";
 
-const MainPage = ({posturl}) => {
+const MainPage = ({ posturl }) => {
 
   const requestMeetings = () => {
-    axios.get( posturl+ "/api/recordings")
-    .then(function (response) {
-      // handle success
-      console.log(response);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-    .then(function () {
-      // always executed
-    });
+    axios.get(posturl + "/api/recordings")
+      .then(function (response) {
+        // handle success
+        let videoLocation = document.querySelector("#PutSampleVideo")
+        console.log(videoLocation)
+        var video = document.createElement('video');
+        video.src = response.data;
+        video.controls = true; 
+        video.style.width = "200px"
+        videoLocation.append(video)       
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
   }
 
   return (
@@ -49,7 +56,7 @@ const MainPage = ({posturl}) => {
               </Box>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Box width="30rem">
+              <Box width="30rem" id="PutSampleVideo">
                 Access all the transcripts of your recorded Zoom meetings
               </Box>
             </ExpansionPanelDetails>
