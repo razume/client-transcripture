@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import axios from "axios"
 import MainPage from "./MainPage"
 import { Button } from "@material-ui/core"
 import {
@@ -9,7 +10,17 @@ import {
 } from "../styled-components/StyledComponents"
 import "../App.css"
 
-function Dashboard({ setAuthCode }) {
+function Dashboard({ setAuthCode, posturl }) {
+  let [userId, setUserId] = useState()
+
+  useEffect(() => {
+    setTimeout(function () {
+      axios
+        .get(posturl + "/api/me")
+        .then((response) => console.log("api/me success ", response.data))
+    }, 1000)
+  }, [])
+
   const handleClick = () => {
     localStorage.removeItem("code")
     setAuthCode("")
@@ -33,7 +44,7 @@ function Dashboard({ setAuthCode }) {
         </Text>{" "}
         Dashboard
       </Heading>
-      <MainPage />
+      <MainPage posturl={posturl} />
     </div>
   )
 }

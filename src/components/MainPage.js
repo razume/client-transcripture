@@ -1,15 +1,21 @@
-import React from "react";
-import theme from "../styled-components/theme";
-import { Box, Text } from "../styled-components/StyledComponents";
-import { ExpansionPanel } from "@material-ui/core";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SettingsIcon from "@material-ui/icons/Settings";
-import EqualizerIcon from "@material-ui/icons/Equalizer";
-import FolderIcon from "@material-ui/icons/Folder";
+import React from "react"
+import theme from "../styled-components/theme"
+import { Box, Text } from "../styled-components/StyledComponents"
+import { ExpansionPanel } from "@material-ui/core"
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary"
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import SettingsIcon from "@material-ui/icons/Settings"
+import EqualizerIcon from "@material-ui/icons/Equalizer"
+import FolderIcon from "@material-ui/icons/Folder"
+import axios from "axios"
 
-const MainPage = () => {
+const MainPage = ({ posturl }) => {
+  const handleClick = (e) => {
+    axios
+      .get(posturl + "/api/recordings")
+      .then((response) => console.log(response))
+  }
   return (
     <Box display="flex" justifyContent="center">
       <Box display="flex" flexDirection="row" width="95%">
@@ -21,7 +27,7 @@ const MainPage = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <ExpansionPanel>
+          <ExpansionPanel onClick={handleClick}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -92,7 +98,7 @@ const MainPage = () => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default MainPage;
+export default MainPage
