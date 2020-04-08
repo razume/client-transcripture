@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import MainPage from "./MainPage"
 import { Button } from "@material-ui/core"
 import {
@@ -7,14 +7,36 @@ import {
   Link,
   Text,
 } from "../styled-components/StyledComponents"
+import Transcripts from "./Transcripts"
+import Reports from "./Reports"
 import "../App.css"
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
+  const [location, setLocation] = useState("")
+
   const handleClick = () => {
     localStorage.removeItem("code")
     setAuthCode("")
     window.location.href = redirectURL
   }
+
+  const renderLocation = () => {
+    if (location == "") {
+      return (
+        <MainPage
+          posturl={posturl}
+          setLocation={setLocation}
+          location={location}
+        />
+      )
+    } else if (location == "Transcripts") {
+      return <Transcripts setLocation={setLocation} />
+    } else if (location == "Reports") {
+      return <Reports setLocation={setLocation} />
+    }
+  }
+
+  console.log("current location: ", location)
   return (
     <div>
       <NavBar>
@@ -29,11 +51,11 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         fontSize="24pt"
       >
         <Text letterSpacing={1} m={2} fontSize="24pt">
-          TranScripture{" "}
-        </Text>{" "}
+          TranScripture
+        </Text>
         Dashboard
       </Heading>
-      <MainPage posturl={posturl} />
+      {renderLocation()}
     </div>
   )
 }
