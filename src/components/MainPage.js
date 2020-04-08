@@ -1,39 +1,25 @@
-import React from "react";
-import theme from "../styled-components/theme";
-import { Box, Text } from "../styled-components/StyledComponents";
-import { ExpansionPanel } from "@material-ui/core";
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import SettingsIcon from "@material-ui/icons/Settings";
-import EqualizerIcon from "@material-ui/icons/Equalizer";
-import FolderIcon from "@material-ui/icons/Folder";
-import axios from "axios";
+import React from "react"
+import theme from "../styled-components/theme"
+import { Box, Text } from "../styled-components/StyledComponents"
+import { ExpansionPanel } from "@material-ui/core"
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary"
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails"
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import SettingsIcon from "@material-ui/icons/Settings"
+import EqualizerIcon from "@material-ui/icons/Equalizer"
+import FolderIcon from "@material-ui/icons/Folder"
+import axios from "axios"
 
-const MainPage = ({ posturl }) => {
-
+const MainPage = ({ posturl, setLocation, location }) => {
   const requestMeetings = () => {
-    axios.get(posturl + "/api/recordings")
-      .then(function (response) {
-        // handle success
-        let videoLocation = document.querySelector("#PutSampleVideo")
-        console.log(videoLocation)
-        var video = document.createElement('video');
-        video.src = response.data;
-        video.controls = true; 
-        video.style.width = "200px"
-        videoLocation.append(video)       
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
+    setLocation("Transcripts")
   }
 
+  const requestReports = () => {
+    setLocation("Reports")
+  }
+
+  console.log("location", location)
   return (
     <Box display="flex" justifyContent="center">
       <Box display="flex" flexDirection="row" width="95%">
@@ -62,7 +48,7 @@ const MainPage = ({ posturl }) => {
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
-          <ExpansionPanel>
+          <ExpansionPanel onClick={requestReports}>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -116,7 +102,7 @@ const MainPage = ({ posturl }) => {
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default MainPage;
+export default MainPage
