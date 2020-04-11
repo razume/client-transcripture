@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 
 import {
   Box,
@@ -6,40 +6,39 @@ import {
   Heading,
   Link,
   NavBar,
-} from "../styled-components/StyledComponents";
-import "../App.css";
-import axios from "axios";
+} from "../styled-components/StyledComponents"
+import "../App.css"
+import axios from "axios"
 
 const Login = ({ redirectURL, clientID, posturl }) => {
-
-  console.log("redirectURL", redirectURL);
-const url =
-  "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
-  clientID +
-  "&redirect_uri=" +
-  redirectURL;
+  console.log("redirectURL", redirectURL)
+  const url =
+    "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
+    clientID +
+    "&redirect_uri=" +
+    redirectURL
 
   useEffect(() => {
     if (window.location.href.indexOf("code") > -1) {
-      console.log(window.location.href);
-      let currenturl = window.location.href;
-      let StartPositionCode = window.location.href.indexOf("code") + 5;
-      let lastindexofurl = window.location.href.length;
-      let code = currenturl.slice(StartPositionCode, lastindexofurl);
-      console.log("Code:", code);
+      console.log(window.location.href)
+      let currenturl = window.location.href
+      let StartPositionCode = window.location.href.indexOf("code") + 5
+      let lastindexofurl = window.location.href.length
+      let code = currenturl.slice(StartPositionCode, lastindexofurl)
+      console.log("Code:", code)
 
       axios
         .post(`${posturl}/api/auth`, {
           code: code,
         })
         .then(function (response) {
-          console.log(response);
+          console.log(response)
         })
         .catch(function (error) {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
-  }, []);
+  }, [])
 
   return (
     <Box>
@@ -58,7 +57,7 @@ const url =
 
       <div></div>
     </Box>
-  );
+  )
 }
 
-export default Login;
+export default Login
