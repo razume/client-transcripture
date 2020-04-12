@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react"
-import MainPage from "./MainPage"
-import { Button } from "@material-ui/core"
+import React, { useState } from "react";
+import MainPage from "./MainPage";
+import { Button } from "@material-ui/core";
 import {
   Heading,
   NavBar,
   Link,
   Text,
-} from "../styled-components/StyledComponents"
-import Transcripts from "./Transcripts"
-import Reports from "./Reports"
-import "../App.css"
+} from "../styled-components/StyledComponents";
+import Transcripts from "./Transcripts";
+import Reports from "./Reports";
+import "../App.css";
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
-  const [location, setLocation] = useState("")
+  const [location, setLocation] = useState("");
 
   const handleClick = () => {
-    localStorage.removeItem("code")
-    setAuthCode("")
-    window.location.href = redirectURL
-  }
+    localStorage.removeItem("code");
+    setAuthCode("");
+    window.location.href = redirectURL;
+  };
 
   const renderLocation = () => {
     if (location == "") {
@@ -28,15 +28,15 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
           setLocation={setLocation}
           location={location}
         />
-      )
+      );
     } else if (location == "Transcripts") {
-      return <Transcripts setLocation={setLocation} />
+      return <Transcripts setLocation={setLocation} />;
     } else if (location == "Reports") {
-      return <Reports setLocation={setLocation} />
+      return <Reports setLocation={setLocation} />;
     }
-  }
+  };
 
-  console.log("current location: ", location)
+  console.log("current location: ", location);
   return (
     <div>
       <NavBar>
@@ -57,7 +57,7 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
       </Heading>
       {renderLocation()}
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
