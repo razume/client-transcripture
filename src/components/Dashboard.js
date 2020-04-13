@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainPage from "./MainPage";
 import { Button } from "@material-ui/core";
 import {
@@ -6,21 +6,21 @@ import {
   NavBar,
   Link,
   Text,
-} from "../styled-components/StyledComponents"
-import Transcripts from "./Transcripts"
-import Reports from "./Reports"
-import axios from "axios"
-import "../App.css"
+} from "../styled-components/StyledComponents";
+import Transcripts from "./Transcripts";
+import Reports from "./Reports";
+import axios from "axios";
+import "../App.css";
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
-  const [location, setLocation] = useState("")
-  const [user, setUser] = useState("")
+  const [location, setLocation] = useState("");
+  const [user, setUser] = useState("");
 
   useEffect(() => {
     if (!user) {
-      axios.post(`${posturl}/api/users`, {}).then((res) => setUser(res))
+      axios.post(`${posturl}/api/users`, {}).then((res) => setUser(res));
     }
-  }, [])
+  }, []);
 
   const handleClick = () => {
     localStorage.removeItem("code");
@@ -31,8 +31,8 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
   const getToken = (e) => {
     axios
       .get(`${posturl}/api/token`)
-      .then((res) => console.log("token acquired ", res.data.accessToken))
-  }
+      .then((res) => console.log("token acquired ", res.data.accessToken));
+  };
 
   const renderLocation = () => {
     if (location == "") {
