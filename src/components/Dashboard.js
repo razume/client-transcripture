@@ -6,19 +6,33 @@ import {
   NavBar,
   Link,
   Text,
-} from "../styled-components/StyledComponents";
-import Transcripts from "./Transcripts";
-import Reports from "./Reports";
-import "../App.css";
+} from "../styled-components/StyledComponents"
+import Transcripts from "./Transcripts"
+import Reports from "./Reports"
+import axios from "axios"
+import "../App.css"
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("")
+  const [user, setUser] = useState("")
+
+  useEffect(() => {
+    if (!user) {
+      axios.post(`${posturl}/api/users`, {}).then((res) => setUser(res))
+    }
+  }, [])
 
   const handleClick = () => {
     localStorage.removeItem("code");
     setAuthCode("");
     window.location.href = redirectURL;
   };
+
+  const getToken = (e) => {
+    axios
+      .get(`${posturl}/api/token`)
+      .then((res) => console.log("token acquired ", res.data.accessToken))
+  }
 
   const renderLocation = () => {
     if (location == "") {
@@ -41,6 +55,7 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
     <div>
       <NavBar>
         <Link href="/">TranScripture</Link>
+        <Button onClick={getToken}>Get accessToken</Button>
         <Button onClick={handleClick}>Log Out</Button>
       </NavBar>
       <Heading

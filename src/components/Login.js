@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"
 
 import {
   Box,
@@ -6,9 +6,9 @@ import {
   Heading,
   Link,
   NavBar,
-} from "../styled-components/StyledComponents";
-import "../App.css";
-import axios from "axios";
+} from "../styled-components/StyledComponents"
+import "../App.css"
+import axios from "axios"
 
 const Login = ({ redirectURL, clientID, posturl }) => {
   const url =
@@ -25,6 +25,7 @@ const Login = ({ redirectURL, clientID, posturl }) => {
       let code = currenturl.slice(StartPositionCode, lastindexofurl);
       console.log("Code:", code);
 
+
       axios
         .post(`${posturl}/api/auth`, {
           code: code,
@@ -33,10 +34,10 @@ const Login = ({ redirectURL, clientID, posturl }) => {
           console.log("POST RESPONSE:", response);
         })
         .catch(function (error) {
-          console.log(error);
-        });
+          console.log(error)
+        })
     }
-  }, []);
+  }, [])
 
   return (
     <Box>
@@ -58,4 +59,5 @@ const Login = ({ redirectURL, clientID, posturl }) => {
   );
 };
 
-export default Login;
+
+export default Login
