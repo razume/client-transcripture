@@ -22,22 +22,20 @@ const Login = ({ redirectURL, clientID, posturl }) => {
       let currenturl = window.location.href;
       let StartPositionCode = window.location.href.indexOf("code") + 5;
       let lastindexofurl = window.location.href.length;
-      let code = currenturl.slice(StartPositionCode, lastindexofurl);
-      console.log("Code:", code);
-
+      let code = currenturl.slice(StartPositionCode, lastindexofurl);      
 
       axios
         .post(`${posturl}/api/auth`, {
           code: code,
         })
         .then(function (response) {
-          console.log("POST RESPONSE:", response);
+          console.log("Request for new Access token Response:", response);
         })
         .catch(function (error) {
           console.log(error)
         })
     }
-  }, [])
+  }, [posturl])
 
   return (
     <Box>

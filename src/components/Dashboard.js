@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainPage from "./MainPage";
 import { Button } from "@material-ui/core";
 import {
@@ -14,28 +14,21 @@ import "../App.css";
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
   const [location, setLocation] = useState("");
-  const [user, setUser] = useState("");
 
-  useEffect(() => {
-    if (!user) {
-      axios.post(`${posturl}/api/users`, {}).then((res) => setUser(res));
-    }
-  }, []);
-
-  const handleClick = () => {
+  const LogOutClicked = () => {
     localStorage.removeItem("code");
     setAuthCode("");
     window.location.href = redirectURL;
   };
 
-  const getToken = (e) => {
+  const getAccessToken = () => {
     axios
       .get(`${posturl}/api/token`)
       .then((res) => console.log("token acquired ", res.data.accessToken));
   };
 
   const renderLocation = () => {
-    if (location == "") {
+    if (location === "") {
       return (
         <MainPage
           posturl={posturl}
@@ -43,20 +36,19 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
           location={location}
         />
       );
-    } else if (location == "Transcripts") {
-      return <Transcripts setLocation={setLocation} />;
-    } else if (location == "Reports") {
+    } else if (location === "Transcripts") {
+      return <Transcripts posturl={posturl} setLocation={setLocation} />;
+    } else if (location === "Reports") {
       return <Reports setLocation={setLocation} />;
     }
   };
 
-  console.log("current location: ", location);
   return (
     <div>
       <NavBar>
         <Link href="/">TranScripture</Link>
-        <Button onClick={getToken}>Get accessToken</Button>
-        <Button onClick={handleClick}>Log Out</Button>
+        <Button onClick={getAccessToken}>Get accessToken</Button>
+        <Button onClick={LogOutClicked}>Log Out</Button>
       </NavBar>
       <Heading
         display="flex"
