@@ -11,28 +11,27 @@ import "../App.css"
 import axios from "axios"
 
 const Login = ({ redirectURL, clientID, posturl }) => {
-  console.log("redirectURL", redirectURL)
   const url =
     "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
     clientID +
     "&redirect_uri=" +
-    redirectURL
+    redirectURL;
 
   useEffect(() => {
     if (window.location.href.indexOf("code") > -1) {
-      console.log(window.location.href)
-      let currenturl = window.location.href
-      let StartPositionCode = window.location.href.indexOf("code") + 5
-      let lastindexofurl = window.location.href.length
-      let code = currenturl.slice(StartPositionCode, lastindexofurl)
-      console.log("Code:", code)
+      let currenturl = window.location.href;
+      let StartPositionCode = window.location.href.indexOf("code") + 5;
+      let lastindexofurl = window.location.href.length;
+      let code = currenturl.slice(StartPositionCode, lastindexofurl);
+      console.log("Code:", code);
+
 
       axios
         .post(`${posturl}/api/auth`, {
           code: code,
         })
         .then(function (response) {
-          console.log(response)
+          console.log("POST RESPONSE:", response);
         })
         .catch(function (error) {
           console.log(error)
@@ -57,7 +56,8 @@ const Login = ({ redirectURL, clientID, posturl }) => {
 
       <div></div>
     </Box>
-  )
-}
+  );
+};
+
 
 export default Login

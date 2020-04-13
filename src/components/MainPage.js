@@ -1,25 +1,28 @@
-import React from "react"
-import theme from "../styled-components/theme"
-import { Box, Text } from "../styled-components/StyledComponents"
-import { ExpansionPanel } from "@material-ui/core"
-import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary"
-import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails"
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
-import SettingsIcon from "@material-ui/icons/Settings"
-import EqualizerIcon from "@material-ui/icons/Equalizer"
-import FolderIcon from "@material-ui/icons/Folder"
-import axios from "axios"
+import React from "react";
+import theme from "../styled-components/theme";
+import { Box, Text } from "../styled-components/StyledComponents";
+import {
+  Link,
+  ExpansionPanel,
+  ExpansionPanelSummary,
+  ExpansionPanelDetails,
+} from "@material-ui/core";
+
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import SettingsIcon from "@material-ui/icons/Settings";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
+import FolderIcon from "@material-ui/icons/Folder";
 
 const MainPage = ({ posturl, setLocation, location }) => {
   const requestMeetings = () => {
-    setLocation("Transcripts")
-  }
+    setLocation("Transcripts");
+  };
 
   const requestReports = () => {
-    setLocation("Reports")
-  }
+    setLocation("Reports");
+  };
 
-  console.log("location", location)
+  console.log("location", location);
   return (
     <Box display="flex" justifyContent="center">
       <Box display="flex" flexDirection="row" width="95%">
@@ -31,7 +34,7 @@ const MainPage = ({ posturl, setLocation, location }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <ExpansionPanel onClick={requestMeetings}>
+          <ExpansionPanel>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -43,12 +46,16 @@ const MainPage = ({ posturl, setLocation, location }) => {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <Box width="30rem" id="PutSampleVideo">
-                Access all the transcripts of your recorded Zoom meetings
+                Click{" "}
+                <Link onClick={requestMeetings} color="error">
+                  here
+                </Link>{" "}
+                to access the transcripts from your recorded Zoom meetings.
               </Box>
             </ExpansionPanelDetails>
           </ExpansionPanel>
 
-          <ExpansionPanel onClick={requestReports}>
+          <ExpansionPanel>
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -59,7 +66,13 @@ const MainPage = ({ posturl, setLocation, location }) => {
               </Box>
             </ExpansionPanelSummary>
             <ExpansionPanelDetails>
-              <Box width="30rem">View reports and meeting data</Box>
+              <Box width="30rem">
+                Click{" "}
+                <Link onClick={requestReports} color="error">
+                  here
+                </Link>{" "}
+                to view reports and meeting data
+              </Box>
             </ExpansionPanelDetails>
           </ExpansionPanel>
           <ExpansionPanel>
@@ -102,7 +115,7 @@ const MainPage = ({ posturl, setLocation, location }) => {
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default MainPage
+export default MainPage;
