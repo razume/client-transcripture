@@ -17,9 +17,12 @@ function Transcripts({ setLocation, posturl }) {
         let videoLocation = document.querySelector("#PutSampleVideo");
         console.log(videoLocation);
         var video = document.createElement("video");
-        video.src = response.data;
+        var transcript = document.createElement("p")
+        video.src = response.data.filePath;
         video.controls = true;
         video.style.width = "200px";
+        transcript.innerHTML = response.data.transcription
+        videoLocation.append(transcript)
         videoLocation.append(video);
         console.log(response.data);
       })
