@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import MainPage from "./MainPage";
-import { Button } from "@material-ui/core";
+import React, { useState, useEffect } from "react"
+import MainPage from "./MainPage"
+import { Button } from "@material-ui/core"
 import {
   Heading,
   NavBar,
   Link,
   Text,
-} from "../styled-components/StyledComponents";
-import Transcripts from "./Transcripts";
-import Reports from "./Reports";
-import axios from "axios";
-import "../App.css";
+} from "../styled-components/StyledComponents"
+import Transcripts from "./Transcripts"
+import Reports from "./Reports"
+import axios from "axios"
+import "../App.css"
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("")
 
   const LogOutClicked = () => {
-    localStorage.removeItem("code");
-    setAuthCode("");
-    window.location.href = redirectURL;
-  };
+    localStorage.removeItem("code")
+    setAuthCode("")
+    window.location.href = redirectURL
+  }
 
   const getAccessToken = () => {
     axios
       .get(`${posturl}/api/token`)
-      .then((res) => console.log("token acquired ", res.data.accessToken));
-  };
+      .then((res) => console.log("token acquired ", res.data.accessToken))
+  }
 
   const renderLocation = () => {
     if (location === "") {
@@ -35,13 +35,13 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
           setLocation={setLocation}
           location={location}
         />
-      );
+      )
     } else if (location === "Transcripts") {
-      return <Transcripts posturl={posturl} setLocation={setLocation} />;
+      return <Transcripts posturl={posturl} setLocation={setLocation} />
     } else if (location === "Reports") {
-      return <Reports setLocation={setLocation} />;
+      return <Reports setLocation={setLocation} />
     }
-  };
+  }
 
   return (
     <div>
@@ -64,7 +64,7 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
       </Heading>
       {renderLocation()}
     </div>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard
