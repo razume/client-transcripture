@@ -56,16 +56,29 @@ const Login = ({ redirectURL, clientID, posturl }) => {
             scribe
           </Text>
         </Box>
-        <Button href={url}>Log in</Button>
-
-        {/*<Link href={url}>Login</Link>*/}
+        <Box>
+          <Button>About</Button>
+          <Button href={url}>Log in</Button>
+        </Box>
       </NavBar>
+      <svg
+        className="background-wave"
+        viewBox="0 0 500 200"
+        preserveAspectRatio="xMinYMin meet"
+      >
+        <path
+          d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
+          style={{ stroke: "none", fill: theme.colors.gray[0] }}
+        />
+      </svg>
+
       <Box display="flex" justifyContent="center">
         <Heading
           textAlign="center"
           fontWeight="700"
           minWidth="25rem"
           maxWidth="50rem"
+          color={theme.colors.gray[5]}
         >
           Get the most out of Zoom. View your team's recorded meetings,
           transcripts of the meetings, and reports.
@@ -77,8 +90,6 @@ const Login = ({ redirectURL, clientID, posturl }) => {
         <Card>Card 2</Card>
         <Card>Card 3</Card>
       </Box>
-
-      <div></div>
     </Box>
   );
 };

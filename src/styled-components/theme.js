@@ -2,6 +2,7 @@ export default {
   colors: {
     // lightest values at color[0], get darker with each increase in index
     gray: [
+      "#f7fdff",
       "#e2e2e2",
       "#c5c5c5",
       "#a7a7a7",
