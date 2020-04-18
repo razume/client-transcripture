@@ -1,14 +1,15 @@
-import React, { useEffect } from "react"
-
+import React, { useEffect } from "react";
+import theme from "../styled-components/theme";
 import {
   Box,
   Card,
   Heading,
-  Link,
   NavBar,
-} from "../styled-components/StyledComponents"
-import "../App.css"
-import axios from "axios"
+  Text,
+} from "../styled-components/StyledComponents";
+import { Button, Link } from "@material-ui/core";
+import "../App.css";
+import axios from "axios";
 
 const Login = ({ redirectURL, clientID, posturl }) => {
   const url =
@@ -22,7 +23,7 @@ const Login = ({ redirectURL, clientID, posturl }) => {
       let currenturl = window.location.href;
       let StartPositionCode = window.location.href.indexOf("code") + 5;
       let lastindexofurl = window.location.href.length;
-      let code = currenturl.slice(StartPositionCode, lastindexofurl);      
+      let code = currenturl.slice(StartPositionCode, lastindexofurl);
 
       axios
         .post(`${posturl}/api/auth`, {
@@ -32,20 +33,45 @@ const Login = ({ redirectURL, clientID, posturl }) => {
           console.log("Request for new Access token Response:", response);
         })
         .catch(function (error) {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
-  }, [posturl])
+  }, [posturl]);
 
   return (
     <Box>
-      <NavBar color="white" mb="3" p="2">
-        <Link href="/">TranScripture</Link>
-        <Link href={url}>Login</Link>
+      <NavBar>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <img
+            className="top-left-logo"
+            src={require("../scribe_logo.png")}
+            alt=""
+          />
+          <Text
+            letterSpacing={theme.letterSpacings[0]}
+            color={theme.colors.gray[8]}
+            fontSize="22pt"
+            fontWeight={400}
+          >
+            scribe
+          </Text>
+        </Box>
+        <Button href={url}>Log in</Button>
+
+        {/*<Link href={url}>Login</Link>*/}
       </NavBar>
-      <Heading textAlign="center" fontWeight="700">
-        Landing Page - Not Logged In
-      </Heading>
+      <Box display="flex" justifyContent="center">
+        <Heading
+          textAlign="center"
+          fontWeight="700"
+          minWidth="25rem"
+          maxWidth="50rem"
+        >
+          Get the most out of Zoom. View your team's recorded meetings,
+          transcripts of the meetings, and reports.
+        </Heading>
+      </Box>
+
       <Box display="flex" justifyContent="space-around">
         <Card>Card 1</Card>
         <Card>Card 2</Card>
@@ -57,5 +83,4 @@ const Login = ({ redirectURL, clientID, posturl }) => {
   );
 };
 
-
-export default Login
+export default Login;

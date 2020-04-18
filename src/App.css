@@ -2,3 +2,8 @@ body {
   font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
   background-color: #f0f0f0;
 }
+.top-left-logo {
+  margin-right: 4px;
+  height: 25px;
+  width: 25px;
+}

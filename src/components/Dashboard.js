@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import MainPage from "./MainPage";
 import { Button } from "@material-ui/core";
+import theme from "../styled-components/theme";
 import {
+  Box,
   Heading,
   NavBar,
   Link,
@@ -46,7 +48,22 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
   return (
     <div>
       <NavBar>
-        <Link href="/">TranScripture</Link>
+        <Box display="flex" flexDirection="row" alignItems="center">
+          <img
+            className="top-left-logo"
+            src={require("../scribe_logo.png")}
+            alt=""
+          />
+          <Text
+            letterSpacing={theme.letterSpacings[0]}
+            color={theme.colors.gray[8]}
+            fontSize="22pt"
+            fontWeight={400}
+          >
+            scribe
+          </Text>
+        </Box>
+
         <Button onClick={getAccessToken}>Get accessToken</Button>
         <Button onClick={LogOutClicked}>Log Out</Button>
       </NavBar>

@@ -10,6 +10,7 @@ export default {
       "#4f4f4f",
       "#4f4f4f",
       "#3b3b3b",
+      "#242321",
     ],
     white: "#fff",
     blue: "#007ce0",
