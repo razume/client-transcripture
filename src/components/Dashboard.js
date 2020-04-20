@@ -51,17 +51,9 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../media/scribe_logo.png")}
+            src={require("../media/scribe_logo_name_dark.svg")}
             alt=""
           />
-          <Text
-            letterSpacing={theme.letterSpacings[0]}
-            color={theme.colors.gray[8]}
-            fontSize="22pt"
-            fontWeight={400}
-          >
-            scribe
-          </Text>
         </Box>
 
         <Button onClick={getAccessToken}>Get accessToken</Button>
