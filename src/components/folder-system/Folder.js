@@ -33,7 +33,7 @@ const Folder = ({ fold, setDirectory, directory }) => {
   }
 
   return (
-    <div className="folder">
+    <div onDoubleClick={handleClick} className="folder">
           <h2>{fold} </h2>
           </div>
   )

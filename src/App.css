@@ -10,7 +10,9 @@ body {
   margin: 3rem;
   background-color: #ADCAD6;
   height: 80vh;
-  max-width: 60vw;
+  min-width: 60vw;
+  overflow: scroll;
+
 }
 
 .folder {

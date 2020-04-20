@@ -9,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Folder from "./Folder";
 import Create from "./Create";
+import { flex } from "styled-system";
 
 const useStyles = makeStyles({
   root: {
@@ -38,7 +39,7 @@ const Home = ({
   const classes = useStyles();
 
   return (
-    <div>
+    <div style={{display: "flex", flexDirection: "row"}}>
       <div className="dash">
       <div>
         {folders &&
