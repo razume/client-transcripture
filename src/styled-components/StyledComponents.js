@@ -43,6 +43,7 @@ export const Card = styled.div`
 export const Heading = styled.h2`
   ${{
     marginLeft: "1rem",
+    marginRight: "1rem",
   }}
   ${border}  
   ${color}
@@ -66,7 +67,7 @@ export const Link = styled.a`
 
 export const NavBar = styled.div`
   ${{
-    backgroundColor: "#4d79ff",
+    backgroundColor: "#dbf8ff",
     boxShadow: "0px 2px 15px gray",
     height: "3rem",
     marginBottom: "3rem",
@@ -80,6 +81,7 @@ export const NavBar = styled.div`
 `;
 
 export const Text = styled.p`
+  ${border}
   ${color}
   ${layout}
   ${space}

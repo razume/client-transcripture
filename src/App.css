@@ -3,6 +3,20 @@ body {
   background-color: #f0f0f0;
 }
 
+.top-left-logo {
+  margin-right: 4px;
+  height: 25px;
+  width: 25px;
+}
+
+.background-wave {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .dash {
   display: flex;
   flex-flow: row wrap;
