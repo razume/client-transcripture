@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./styled-components/theme";
 import "./App.css";
-import Login from "./components/Login";
+import LandingPage from "./components/LandingPage";
 import Dashboard from "./components/Dashboard";
 
 const clientID = "wvaVD6itTme4P9YBmPMZkg";
@@ -22,7 +22,6 @@ function App() {
   const [authCode, setAuthCode] = useState("");
 
   useEffect(() => {
-
     // Getting Auth code from url
     if (window.location.href.indexOf("code") > -1) {
       let currenturl = window.location.href;
@@ -49,7 +48,7 @@ function App() {
           posturl={posturl}
         />
       ) : (
-        <Login
+        <LandingPage
           clientID={clientID}
           redirectURL={redirectURL}
           posturl={posturl}

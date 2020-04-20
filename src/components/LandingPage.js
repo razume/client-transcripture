@@ -7,11 +7,12 @@ import {
   NavBar,
   Text,
 } from "../styled-components/StyledComponents";
+import PostCard from "./PostCard";
 import { Button, Link } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
-const Login = ({ redirectURL, clientID, posturl }) => {
+const LandingPage = ({ redirectURL, clientID, posturl }) => {
   const url =
     "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
     clientID +
@@ -44,17 +45,8 @@ const Login = ({ redirectURL, clientID, posturl }) => {
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../scribe_logo.png")}
-            alt=""
+            src={require("../media/scribe_logo_name_dark.svg")}
           />
-          <Text
-            letterSpacing={theme.letterSpacings[0]}
-            color={theme.colors.gray[8]}
-            fontSize="22pt"
-            fontWeight={400}
-          >
-            scribe
-          </Text>
         </Box>
         <Box>
           <Button>About</Button>
@@ -67,31 +59,50 @@ const Login = ({ redirectURL, clientID, posturl }) => {
         preserveAspectRatio="xMinYMin meet"
       >
         <path
-          d="M0,100 C150,200 350,0 500,100 L500,00 L0,0 Z"
-          style={{ stroke: "none", fill: theme.colors.gray[0] }}
+          d="M0,200 C350,100 350,0 500,50 L500,00 L0,0 Z"
+          style={{ stroke: "none", fill: "#E4ECED" }}
         />
       </svg>
 
       <Box display="flex" justifyContent="center">
         <Heading
           textAlign="center"
-          fontWeight="700"
+          fontWeight="400"
           minWidth="25rem"
           maxWidth="50rem"
-          color={theme.colors.gray[5]}
+          color={theme.colors.gray[6]}
         >
           Get the most out of Zoom. View your team's recorded meetings,
           transcripts of the meetings, and reports.
         </Heading>
       </Box>
 
-      <Box display="flex" justifyContent="space-around">
-        <Card>Card 1</Card>
-        <Card>Card 2</Card>
-        <Card>Card 3</Card>
+      <Box display="flex" justifyContent="space-around" flexWrap="wrap" mt={5}>
+        <PostCard
+          imageUrl={require("../media/typewriter.jpg")}
+          cardTitle={"Transcripts"}
+          cardBody={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          }
+        />
+        <PostCard
+          imageUrl={require("../media/camcorder.jpg")}
+          cardTitle={"Recorded Meetings"}
+          cardBody={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          }
+        />
+
+        <PostCard
+          imageUrl={require("../media/calculator.jpg")}
+          cardTitle={"Reports"}
+          cardBody={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          }
+        />
       </Box>
     </Box>
   );
 };
 
-export default Login;
+export default LandingPage;

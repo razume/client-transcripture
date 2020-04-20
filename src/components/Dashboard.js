@@ -51,7 +51,7 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../scribe_logo.png")}
+            src={require("../media/scribe_logo.png")}
             alt=""
           />
           <Text
