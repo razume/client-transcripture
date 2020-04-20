@@ -20,4 +20,54 @@ body {
 .dash {
   display: flex;
   flex-flow: row wrap;
+  padding: 5rem;
+  margin: 3rem;
+  background-image: linear-gradient(to right top, #3220eb, #2646f2, #2e61f5, #4479f4, #5f8ef0, #539cf1, #51a8ef, #5bb3eb, #33bae8, #00c0de, #00c5d0, #1fc9be);  min-height: 70vh;
+  border-radius: 25px;
+  min-height: 70vh;
+  max-width: 60vw;
+}
+
+
+.folder {
+  text-align: center;
+  color: white;
+  width: 150px;
+  height: 105px;
+  margin: 1rem;
+  margin-top: 50px;
+  position: relative;
+  background-color: #708090;
+  border-radius: 0 6px 6px 6px;
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.59);
+}
+
+.folder:before {
+  content: '';
+  width: 50%;
+  height: 12px;
+  border-radius: 0 20px 0 0;
+  background-color: #708090;
+  position: absolute;
+  top: -12px;
+  left: 0px;
+}
+
+
+.doc {
+  text-align: center;
+  color: black;
+  width: 100px;
+  height: 105px;
+  margin: 1rem;
+  margin-top: 40px;
+  position: relative;
+  background-color: #FEFEDF;
+  border-radius: 6px;
+  box-shadow: 4px 4px 7px rgba(0, 0, 0, 0.59);
+}
+
+.doc-title {
+  word-wrap: break-word;
+  margin-top: 3vh;
 }

@@ -12,6 +12,8 @@ function Transcripts({ setLocation, posturl }) {
   let [folders, setFolders] = useState()
   let [transcripts, setTranscripts] = useState([])
 
+
+  console.log(transcripts)
   const handleBack = () => {
     setLocation("")
   }

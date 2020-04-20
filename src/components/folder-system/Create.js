@@ -11,7 +11,8 @@ import TextField from "@material-ui/core/TextField"
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    width: "15vw",
+    height: "15vh",
   },
   bullet: {
     display: "inline-block",
@@ -22,7 +23,6 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
   },
 })
 
@@ -62,7 +62,7 @@ const Create = ({ directory, folders, setFolders, posturl }) => {
           create folder
         </Button>
       </CardActions>
-      <CardContent>
+      <CardContent style={{backgroundColor: "white"}}>
         <TextField onChange={handleTextInput} style={{ marginLeft: "10%" }} />
       </CardContent>
     </Card>
