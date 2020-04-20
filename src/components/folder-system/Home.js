@@ -40,16 +40,7 @@ const Home = ({
   return (
     <div>
       <div className="dash">
-        {transcripts.map((trans) => {
-          return (
-            <Transcript
-              key={Math.random()}
-              directory={directory}
-              transcript={trans}
-            />
-          );
-        })}
-        <div>
+      <div>
         {folders &&
           folders[directory[directory.length - 1]].map((fold) => {
             if (fold) {
@@ -64,6 +55,15 @@ const Home = ({
             }
           })}
           </div>
+        {transcripts.map((trans) => {
+          return (
+            <Transcript
+              key={Math.random()}
+              directory={directory}
+              transcript={trans}
+            />
+          );
+        })}
       </div>
       <Create
         directory={directory}
