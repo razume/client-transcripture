@@ -49,6 +49,7 @@ const Home = ({
             />
           );
         })}
+        <div>
         {folders &&
           folders[directory[directory.length - 1]].map((fold) => {
             if (fold) {
@@ -62,6 +63,7 @@ const Home = ({
               );
             }
           })}
+          </div>
       </div>
       <Create
         directory={directory}
