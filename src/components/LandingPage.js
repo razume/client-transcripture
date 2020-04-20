@@ -45,7 +45,7 @@ const LandingPage = ({ redirectURL, clientID, posturl }) => {
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../media/scribe_logo_name_dark.svg")}
+            src={require("../media/scribe_circle_dark.svg")}
           />
         </Box>
         <Box>
