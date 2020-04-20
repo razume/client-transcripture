@@ -5,8 +5,8 @@ body {
 
 .top-left-logo {
   margin-right: 4px;
-  height: 25px;
-  width: 25px;
+  height: 55px;
+  width: 130px;
 }
 
 .background-wave {
@@ -15,6 +15,23 @@ body {
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.background-wave2 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.line {
+  height: 2px;
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.line:hover {
+  background-color: red;
 }
 
 .dash {

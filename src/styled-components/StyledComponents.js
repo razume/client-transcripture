@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "./theme";
 
 import {
   border,
@@ -20,21 +21,18 @@ export const Box = styled.div`
   ${typography}
 `;
 
-// export const Button = styled.button`
-//   ${color}
-//   ${layout}
-//   ${space}
-//   ${typography}
-// `;
-
 export const Card = styled.div`
   ${{
     boxShadow: "2px 10px 16px #d6d6d6",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
     padding: "1rem",
     marginBottom: "1rem",
     marginTop: "1rem",
     height: "18rem",
-    width: "15rem",
+    width: "22rem",
     backgroundColor: "white",
     borderRadius: "5px",
   }}
@@ -67,8 +65,8 @@ export const Link = styled.a`
 
 export const NavBar = styled.div`
   ${{
-    backgroundColor: "#dbf8ff",
-    boxShadow: "0px 2px 15px gray",
+    backgroundColor: "#5191E8",
+    boxShadow: `0px 1px 5px ${theme.colors.gray[4]}`,
     height: "3rem",
     marginBottom: "3rem",
     display: "flex",

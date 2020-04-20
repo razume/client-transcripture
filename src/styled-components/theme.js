@@ -14,7 +14,7 @@ export default {
       "#242321",
     ],
     white: "#fff",
-    blue: "#007ce0",
+    blue: "#5e90f2",
     navy: "#004175",
     bgAccent: "#33E0FF",
   },
