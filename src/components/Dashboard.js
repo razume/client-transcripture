@@ -16,6 +16,7 @@ import axios from "axios"
 import "../App.css"
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
+
   const [location, setLocation] = useState("")
   let [transcripts, setTranscripts] = useState([])
   let [folders, setFolders] = useState()
@@ -85,6 +86,7 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         />
       )
     } else if (location === "Transcripts") {
+
       return (
         <Transcripts
           posturl={posturl}
