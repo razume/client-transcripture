@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import MainPage from "./MainPage";
 import { Button, Paper } from "@material-ui/core";
@@ -8,27 +9,72 @@ import {
   NavBar,
   Link,
   Text,
-} from "../styled-components/StyledComponents";
-import Transcripts from "./Transcripts";
-import Reports from "./Reports";
-import axios from "axios";
-import "../App.css";
+} from "../styled-components/StyledComponents"
+import Transcripts from "./Transcripts"
+import Reports from "./Reports"
+import axios from "axios"
+import "../App.css"
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
-  const [location, setLocation] = useState("");
-  let [transcripts, setTranscripts] = useState([]);
+
+  const [location, setLocation] = useState("")
+  let [transcripts, setTranscripts] = useState([])
+  let [folders, setFolders] = useState()
+
+  const getFolders = () => {
+    axios
+      .get(posturl + "/api/db/folders")
+      .then((fold) => setFolders(fold.data.folders))
+  }
+
+  const requestMeetings = () => {
+    axios
+      .get(posturl + "/api/recordings")
+      .then(function (response) {
+        // handle success
+        let videoLocation = document.querySelector("#PutSampleVideo")
+        console.log(videoLocation)
+        var video = document.createElement("video")
+        var transcript = document.createElement("p")
+        video.src = response.data.filePath
+        video.controls = true
+        video.style.width = "200px"
+        transcript.innerHTML = response.data.transcription
+        videoLocation.append(transcript)
+        videoLocation.append(video)
+        console.log(response.data)
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function () {
+        axios
+          .get(posturl + "/api/db/transcripts")
+          .then((res) => setTranscripts(res.data))
+      })
+
+    axios
+      .get(posturl + "/api/db/transcripts")
+      .then((res) => setTranscripts(res.data))
+  }
+
+  useEffect(() => {
+    requestMeetings()
+    getFolders()
+  }, [])
 
   const LogOutClicked = () => {
-    localStorage.removeItem("code");
-    setAuthCode("");
-    window.location.href = redirectURL;
-  };
+    localStorage.removeItem("code")
+    setAuthCode("")
+    window.location.href = redirectURL
+  }
 
   const getAccessToken = () => {
     axios
       .get(`${posturl}/api/token`)
-      .then((res) => console.log("token acquired ", res.data.accessToken));
-  };
+      .then((res) => console.log("token acquired ", res.data.accessToken))
+  }
 
   const renderLocation = () => {
     if (location === "") {
@@ -38,13 +84,23 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
           setLocation={setLocation}
           location={location}
         />
-      );
+      )
     } else if (location === "Transcripts") {
-      return <Transcripts transcripts={transcripts} setTranscripts={setTranscripts} posturl={posturl} setLocation={setLocation} />;
+
+      return (
+        <Transcripts
+          posturl={posturl}
+          setLocation={setLocation}
+          transcripts={transcripts}
+          setTranscripts={setTranscripts}
+          setFolders={setFolders}
+          folders={folders}
+        />
+      )
     } else if (location === "Reports") {
-      return <Reports transcripts={transcripts} setLocation={setLocation} />;
+      return <Reports setLocation={setLocation} />
     }
-  };
+  }
 
   return (
     <div>
@@ -71,7 +127,7 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
       </svg>
       {renderLocation()}
     </div>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard
