@@ -25,15 +25,19 @@ const MainPage = ({ posturl, setLocation, location }) => {
 
   console.log("location", location);
   return (
-    <Box display="flex" justifyContent="center">
+    <Box display="flex" justifyContent="center" p="1rem">
       <Box
+        backgroundColor={theme.colors.gray[1]}
+        borderRadius="4px"
+        boxShadow={`0px 1px 3px ${theme.colors.gray[5]}`}
         display="flex"
         flexDirection="column"
         flexWrap="wrap"
-        width="90%"
         alignItems="center"
+        p="2rem"
+        width="77rem"
       >
-        <Box width="86%" mb="1rem">
+        <Box width="93%" mb="1rem">
           <Paper>
             <Box
               display="flex"
@@ -52,13 +56,13 @@ const MainPage = ({ posturl, setLocation, location }) => {
           display="flex"
           flexDirection="row"
           justifyContent="space-around"
-          width="90%"
+          width="100%"
+          flexWrap="wrap"
         >
           <Box
             display="flex"
             flex="1"
             flexDirection="column"
-            height="65vh"
             justifyContent="center"
             alignItems="center"
           >
@@ -120,16 +124,10 @@ const MainPage = ({ posturl, setLocation, location }) => {
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </Box>
-          <Box
-            display="flex"
-            flex="1"
-            height="65vh"
-            justifyContent="center"
-            alignItems="center"
-          >
+          <Box display="flex" flex="1" justifyContent="center">
             <Box
-              height="30rem"
-              width="30rem"
+              height="25rem"
+              width="25rem"
               borderRadius="50%"
               border="3px solid tomato"
               display="flex"
@@ -137,6 +135,7 @@ const MainPage = ({ posturl, setLocation, location }) => {
               justifyContent="center"
               boxShadow={`1px 1px 10px ${theme.colors.gray[1]}`}
               color="tomato"
+              m="1rem"
             >
               Saved Transcripts Chart
             </Box>
