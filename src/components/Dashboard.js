@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
-import MainPage from "./MainPage"
-import { Button } from "@material-ui/core"
-import theme from "../styled-components/theme"
+
+import React, { useState, useEffect } from "react";
+import MainPage from "./MainPage";
+import { Button, Paper } from "@material-ui/core";
+import theme from "../styled-components/theme";
 import {
   Box,
   Heading,
@@ -105,26 +106,23 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../media/scribe_logo_name_dark.svg")}
+            src={require("../media/scribe_circle_dark.svg")}
             alt=""
           />
         </Box>
-
         <Button onClick={getAccessToken}>Get accessToken</Button>
         <Button onClick={LogOutClicked}>Log Out</Button>
       </NavBar>
-      <Heading
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        fontSize="24pt"
+      <svg
+        className="background-wave"
+        viewBox="0 0 500 200"
+        preserveAspectRatio="xMinYMin meet"
       >
-        <Text letterSpacing={1} m={2} fontSize="24pt">
-          TranScripture
-        </Text>
-        Dashboard
-      </Heading>
+        <path
+          d="M0,200 C350,100 350,0 500,50 L500,00 L0,0 Z"
+          style={{ stroke: "none", fill: "#E4ECED" }}
+        />
+      </svg>
       {renderLocation()}
     </div>
   )

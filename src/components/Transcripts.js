@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { ThemeProvider } from "styled-components"
-import theme from "../styled-components/theme"
-import { Box } from "../styled-components/StyledComponents"
-import axios from "axios"
-import Home from "./folder-system/Home.js"
-import Typography from "@material-ui/core/Typography"
-import Breadcrumbs from "@material-ui/core/Breadcrumbs"
+import React, { useEffect, useState } from "react";
+import { ThemeProvider } from "styled-components";
+import theme from "../styled-components/theme";
+import { Box } from "../styled-components/StyledComponents";
+import axios from "axios";
+import Home from "./folder-system/Home.js";
+import Typography from "@material-ui/core/Typography";
+import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
 function Transcripts({
   setLocation,
@@ -18,20 +18,22 @@ function Transcripts({
   let [directory, setDirectory] = useState(["Home"])
 
   console.log(transcripts)
+
   const handleBack = () => {
-    setLocation("")
-  }
+    setLocation("");
+  };
 
   const climbTree = () => {
     if (directory.length > 1) {
-      setDirectory([...directory].splice(0, directory.length - 1))
+      setDirectory([...directory].splice(0, directory.length - 1));
     } else {
-      console.log("This as far back as she goes cheif.")
+      console.log("This as far back as she goes cheif.");
     }
-  }
+  };
 
   console.log("FOLDERS", folders)
   console.log("TRANSCRIPTS", transcripts)
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -43,7 +45,7 @@ function Transcripts({
         <h4>Current directory: {directory[directory.length - 1]}</h4>
         <Breadcrumbs aria-label="breadcrumb">
           {directory.map((directory) => {
-            return <Typography key={Math.random()}>{directory}</Typography>
+            return <Typography key={Math.random()}>{directory}</Typography>;
           })}
         </Breadcrumbs>
         {directory.length > 1 && <button onClick={climbTree}>&#8592;</button>}
@@ -57,7 +59,7 @@ function Transcripts({
         />
       </div>
     </ThemeProvider>
-  )
+  );
 }
 
-export default Transcripts
+export default Transcripts;
