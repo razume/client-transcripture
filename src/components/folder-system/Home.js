@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react"
-import ReactDOM from "react-dom"
-import Transcript from "./Transcript"
-import { makeStyles } from "@material-ui/core/styles"
-import Card from "@material-ui/core/Card"
-import CardActions from "@material-ui/core/CardActions"
-import CardContent from "@material-ui/core/CardContent"
-import Button from "@material-ui/core/Button"
-import Typography from "@material-ui/core/Typography"
-import Folder from "./Folder"
-import Create from "./Create"
-import { flex } from "styled-system"
-import { DndProvider } from "react-dnd"
-import Backend from "react-dnd-html5-backend"
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import Transcript from "./Transcript";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Folder from "./Folder";
+import Create from "./Create";
+import { flex } from "styled-system";
+import { DndProvider } from "react-dnd";
+import Backend from "react-dnd-html5-backend";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 275
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)",
+    transform: "scale(0.8)"
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
-    marginBottom: 12,
-  },
-})
+    marginBottom: 12
+  }
+});
 
 const Home = ({
   transcripts,
@@ -36,9 +36,9 @@ const Home = ({
   setFolders,
   directory,
   setDirectory,
-  posturl,
+  posturl
 }) => {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
@@ -55,7 +55,7 @@ const Home = ({
                       setDirectory={setDirectory}
                       fold={fold}
                     />
-                  )
+                  );
                 }
               })}
           </div>
@@ -66,7 +66,7 @@ const Home = ({
                 directory={directory}
                 transcript={trans}
               />
-            )
+            );
           })}
         </DndProvider>
       </div>
@@ -77,7 +77,7 @@ const Home = ({
         posturl={posturl}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

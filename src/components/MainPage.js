@@ -5,7 +5,7 @@ import {
   Link,
   ExpansionPanel,
   ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  ExpansionPanelDetails
 } from "@material-ui/core";
 
 import { Paper } from "@material-ui/core";
