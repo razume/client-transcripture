@@ -12,7 +12,7 @@ import TextField from "@material-ui/core/TextField"
 const useStyles = makeStyles({
   root: {
     width: "20vw",
-    height: "25vh"
+    height: "25vh",
   },
   bullet: {
     display: "inline-block",
@@ -34,12 +34,9 @@ const Create = ({ directory, folders, setFolders, posturl }) => {
   const handleClick = (e) => {
     if (input) {
       let result = folders
-      console.log(result[currentDirectory][result[currentDirectory].length - 1])
-      console.log({ ...folders })
       result[currentDirectory][result[currentDirectory].length] = input
       result[`${input}`] = []
       setFolders({ ...result })
-      console.log("asdf", result)
       axios
         .post(posturl + "/api/db/folders", { folders })
         .then((res) => console.log("updated folders object", res))
