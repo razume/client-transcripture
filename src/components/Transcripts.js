@@ -7,10 +7,9 @@ import Home from "./folder-system/Home.js";
 import Typography from "@material-ui/core/Typography";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 
-function Transcripts({ setLocation, posturl }) {
+function Transcripts({ setLocation, posturl, transcripts, setTranscripts}) {
   let [directory, setDirectory] = useState(["Home"]);
   let [folders, setFolders] = useState();
-  let [transcripts, setTranscripts] = useState([]);
 
   console.log(transcripts);
   const handleBack = () => {

@@ -16,6 +16,7 @@ import "../App.css";
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
   const [location, setLocation] = useState("");
+  let [transcripts, setTranscripts] = useState([]);
 
   const LogOutClicked = () => {
     localStorage.removeItem("code");
@@ -39,9 +40,9 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         />
       );
     } else if (location === "Transcripts") {
-      return <Transcripts posturl={posturl} setLocation={setLocation} />;
+      return <Transcripts transcripts={transcripts} setTranscripts={setTranscripts} posturl={posturl} setLocation={setLocation} />;
     } else if (location === "Reports") {
-      return <Reports setLocation={setLocation} />;
+      return <Reports transcripts={transcripts} setLocation={setLocation} />;
     }
   };
 
