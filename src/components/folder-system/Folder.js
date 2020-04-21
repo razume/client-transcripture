@@ -12,19 +12,19 @@ const useStyles = makeStyles({
   root: {
     width: "10vw",
     height: "10vh",
-    margin: "3rem",
+    margin: "3rem"
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)",
+    transform: "scale(0.8)"
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
-    marginBottom: 12,
-  },
+    marginBottom: 12
+  }
 });
 
 const Folder = ({ fold, setDirectory, directory }) => {
@@ -34,8 +34,8 @@ const Folder = ({ fold, setDirectory, directory }) => {
     drop: () => ({ name: fold }),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
+      canDrop: monitor.canDrop()
+    })
   });
 
   const handleClick = (e) => {

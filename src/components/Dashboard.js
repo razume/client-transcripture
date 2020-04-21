@@ -7,7 +7,7 @@ import {
   Heading,
   NavBar,
   Link,
-  Text,
+  Text
 } from "../styled-components/StyledComponents";
 import Transcripts from "./Transcripts";
 import Reports from "./Reports";

@@ -15,19 +15,19 @@ import Backend from "react-dnd-html5-backend";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 275
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)",
+    transform: "scale(0.8)"
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
-    marginBottom: 12,
-  },
+    marginBottom: 12
+  }
 });
 
 const Home = ({
@@ -36,7 +36,7 @@ const Home = ({
   setFolders,
   directory,
   setDirectory,
-  posturl,
+  posturl
 }) => {
   const classes = useStyles();
 

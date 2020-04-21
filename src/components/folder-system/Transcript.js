@@ -13,19 +13,19 @@ const useStyles = makeStyles({
   root: {
     width: "10vw",
     height: "10vh",
-    margin: "3rem",
+    margin: "3rem"
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)",
+    transform: "scale(0.8)"
   },
   title: {
-    fontSize: 14,
+    fontSize: 14
   },
   pos: {
-    marginBottom: 12,
-  },
+    marginBottom: 12
+  }
 });
 //The api route is a post to /api/db/transcripts. It take a match query (the transcriptionFilePath / req.body.transcriptionFilePath)
 //and the updated ancestor array ( req.body.newAncestors ) the array gives the hierarchy from top to bottom i.e ([Home, Meetings, Test]) with test being the directory that the transcription resides
@@ -42,8 +42,8 @@ const Transcript = ({ transcript, directory }) => {
       }
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
+      isDragging: monitor.isDragging()
+    })
   });
   const opacity = isDragging ? 0.3 : 1;
   const currentDirectory = directory[directory.length - 1];
