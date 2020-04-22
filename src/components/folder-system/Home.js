@@ -12,6 +12,7 @@ import Create from "./Create";
 import { flex } from "styled-system";
 import { DndProvider } from "react-dnd";
 import Backend from "react-dnd-html5-backend";
+import TranscriptionViewer from "../TranscriptionViewer"
 
 const useStyles = makeStyles({
   root: {
@@ -39,45 +40,54 @@ const Home = ({
   posturl
 }) => {
   const classes = useStyles();
+  const [fileSelect, setFileSelect] = useState(false)
+  const [TranscriptionData, setTranscriptionData] = useState()
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <div className="dash">
-        <DndProvider backend={Backend}>
-          <div>
-            {folders &&
-              folders[directory[directory.length - 1]].map((fold) => {
-                if (fold) {
-                  return (
-                    <Folder
-                      key={Math.random()}
-                      directory={directory}
-                      setDirectory={setDirectory}
-                      fold={fold}
-                    />
-                  );
-                }
-              })}
+      {fileSelect ? <TranscriptionViewer TranscriptionData={TranscriptionData} setFileSelect={setFileSelect} /> :
+      <div>
+        <div className="dash">
+          <DndProvider backend={Backend}>
+            <div>
+              {folders &&
+                folders[directory[directory.length - 1]].map((fold) => {
+                  if (fold) {
+                    return (
+                      <Folder
+                        key={Math.random()}
+                        directory={directory}
+                        setDirectory={setDirectory}
+                        fold={fold}
+                      />
+                    );
+                  }
+                })}
+            </div>
+            {transcripts.map((trans) => {
+              return (
+                <Transcript
+                  setFileSelect={setFileSelect}
+                  key={Math.random()}
+                  directory={directory}
+                  transcript={trans}
+                  posturl={posturl}
+                  setTranscriptionData={setTranscriptionData}
+                />
+              );
+            })}
+          </DndProvider>
           </div>
-          {transcripts.map((trans) => {
-            return (
-              <Transcript
-                key={Math.random()}
-                directory={directory}
-                transcript={trans}
-                posturl={posturl}
-              />
-            );
-          })}
-        </DndProvider>
-      </div>
-      <Create
-        directory={directory}
-        folders={folders}
-        setFolders={setFolders}
-        posturl={posturl}
-      />
+          <Create
+            directory={directory}
+            folders={folders}
+            setFolders={setFolders}
+            posturl={posturl}
+          />
+        </div>
+      }
     </div>
+
   );
 };
 
