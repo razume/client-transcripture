@@ -65,6 +65,7 @@ const Home = ({
                 key={Math.random()}
                 directory={directory}
                 transcript={trans}
+                posturl={posturl}
               />
             );
           })}
