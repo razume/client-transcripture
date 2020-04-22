@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { useDrag } from "react-dnd";
 import ItemTypes from "./ItemTypes";
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
 });
 //The api route is a post to /api/db/transcripts. It take a match query (the transcriptionFilePath / req.body.transcriptionFilePath)
 //and the updated ancestor array ( req.body.newAncestors ) the array gives the hierarchy from top to bottom i.e ([Home, Meetings, Test]) with test being the directory that the transcription resides
-const Transcript = ({ transcript, directory }) => {
+const Transcript = ({ transcript, directory, posturl }) => {
   //I dont know if you need to pass the setTranscript function or not, you may be able to update the transcript.ancestors directly
   const name = transcript.transcriptionFilePath; //Provide transcript ancestor array to match current directory and target directory
   const classes = useStyles();
@@ -38,6 +39,16 @@ const Transcript = ({ transcript, directory }) => {
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult(); //dropResult is the dropTarget object
       if (item && dropResult) {
+        let updatedAncestors = transcript.ancestors;
+        updatedAncestors.push(dropResult.name);
+        console.log(updatedAncestors);
+        axios
+          .post(posturl + "/api/db/transcripts", {
+            transcriptionFilePath: name,
+            videoFilePath: transcript.videoFilePath,
+            newAncestors: updatedAncestors
+          })
+          .then((res) => console.log("updated ancestor", res));
         alert(`You dropped ${item.name} into ${dropResult.name}!`); //What to do when transcript is dropped on folder
       }
     },
@@ -45,6 +56,7 @@ const Transcript = ({ transcript, directory }) => {
       isDragging: monitor.isDragging()
     })
   });
+
   const opacity = isDragging ? 0.3 : 1;
   const currentDirectory = directory[directory.length - 1];
   const myDirectory = transcript.ancestors[transcript.ancestors.length - 1];
