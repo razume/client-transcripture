@@ -75,7 +75,7 @@ const Transcript = ({ transcript, directory, posturl, setFileSelect, setTranscri
 
   return (
     <div ref={drag} style={{ display: visible, opacity }} className="doc">
-      <div onClick={() => {setTranscriptionData(transcript.content); setFileSelect(true)}}>
+      <div onClick={() => {setTranscriptionData(transcript); setFileSelect(true)}}>
       <hr />
       <hr />
       <hr />
