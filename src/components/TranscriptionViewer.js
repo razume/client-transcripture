@@ -5,12 +5,12 @@ import { Box } from "../styled-components/StyledComponents";
 import Transcripts from "./reporting/transcripts"
 
 const TranscriptionViewer = ({TranscriptionData, setFileSelect }) => {
-
+    console.log(TranscriptionData)
     return (
         <ThemeProvider theme={theme}>
             <Box width="30rem" id="PutSampleVideo">
             <button onClick={() => setFileSelect(false)}> Go back</button>
-            <p>{TranscriptionData}</p>
+            <p style={{whiteSpace: "pre-line"}}>{TranscriptionData.content}</p>
             </Box>
         </ThemeProvider>
     );
