@@ -9,6 +9,10 @@ body {
   width: 130px;
 }
 
+.dashboard-flowchart {
+  height: 480px;
+}
+
 .background-wave {
   display: inline-block;
   position: absolute;
@@ -39,11 +43,10 @@ body {
   flex-flow: column wrap;
   padding: 5rem;
   margin: 3rem;
-  background-color: #ADCAD6;
+  background-color: #adcad6;
   height: 80vh;
   min-width: 60vw;
   overflow: scroll;
-
 }
 
 .folder {
@@ -51,7 +54,7 @@ body {
   color: white;
   width: 300px;
   height: 200px;
-  margin: .5rem;
+  margin: 0.5rem;
   margin-top: 50px;
   position: relative;
   background-color: #708090;
