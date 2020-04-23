@@ -76,7 +76,7 @@ const Home = ({
                     }
                   })}
               </div>
-              {transcripts.map((trans) => {
+              {transcripts.map((transcript) => {
                 return (
                   <Transcript
                     setFileSelect={setFileSelect}
@@ -89,6 +89,7 @@ const Home = ({
                     transcripts={transcripts}
                     setTranscripts={setTranscripts}
                     setTranscriptionData={setTranscriptionData}
+                    transcript={transcript}
                   />
                 );
               })}
