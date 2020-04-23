@@ -45,7 +45,7 @@ const Home = ({
 
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      {fileSelect ? <TranscriptionViewer TranscriptionData={TranscriptionData} setFileSelect={setFileSelect} /> :
+      {fileSelect ? <TranscriptionViewer posturl={posturl} TranscriptionData={TranscriptionData} setFileSelect={setFileSelect} /> :
       <div>
         <div className="dash">
           <DndProvider backend={Backend}>
