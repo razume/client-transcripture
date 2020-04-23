@@ -5,7 +5,7 @@ import {
   Link,
   ExpansionPanel,
   ExpansionPanelSummary,
-  ExpansionPanelDetails
+  ExpansionPanelDetails,
 } from "@material-ui/core";
 
 import { Paper } from "@material-ui/core";
@@ -125,20 +125,11 @@ const MainPage = ({ posturl, setLocation, location }) => {
             </ExpansionPanel>
           </Box>
           <Box display="flex" flex="1" justifyContent="center">
-            <Box
-              height="25rem"
-              width="25rem"
-              borderRadius="50%"
-              border="3px solid tomato"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              boxShadow={`1px 1px 10px ${theme.colors.gray[1]}`}
-              color="tomato"
-              m="1rem"
-            >
-              Saved Transcripts Chart
-            </Box>
+            <img
+              className="dashboard-flowchart"
+              src={require("../media/scribe_flow_chart_mini.svg")}
+              alt="flow chart mapping out Scribe functionality"
+            />
           </Box>
         </Box>
       </Box>
