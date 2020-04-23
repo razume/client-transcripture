@@ -15,28 +15,29 @@ import Backend from "react-dnd-html5-backend";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275
+    minWidth: 275,
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)"
+    transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14
+    fontSize: 14,
   },
   pos: {
-    marginBottom: 12
-  }
+    marginBottom: 12,
+  },
 });
 
 const Home = ({
   transcripts,
+  setTranscripts,
   folders,
   setFolders,
   directory,
   setDirectory,
-  posturl
+  posturl,
 }) => {
   const classes = useStyles();
 
@@ -54,6 +55,11 @@ const Home = ({
                       directory={directory}
                       setDirectory={setDirectory}
                       fold={fold}
+                      folders={folders}
+                      setFolders={setFolders}
+                      posturl={posturl}
+                      transcripts={transcripts}
+                      setTranscripts={setTranscripts}
                     />
                   );
                 }
@@ -66,6 +72,8 @@ const Home = ({
                 directory={directory}
                 transcript={trans}
                 posturl={posturl}
+                setTranscripts={setTranscripts}
+                transcripts={transcripts}
               />
             );
           })}

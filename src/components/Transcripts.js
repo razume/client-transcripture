@@ -93,6 +93,7 @@ function Transcripts({ setLocation, posturl }) {
           folders={folders}
           setFolders={setFolders}
           posturl={posturl}
+          setTranscripts={setTranscripts}
         />
       </div>
     </ThemeProvider>
