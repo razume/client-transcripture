@@ -16,28 +16,29 @@ import TranscriptionViewer from "../TranscriptionViewer"
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275
+    minWidth: 275,
   },
   bullet: {
     display: "inline-block",
     margin: "0 2px",
-    transform: "scale(0.8)"
+    transform: "scale(0.8)",
   },
   title: {
-    fontSize: 14
+    fontSize: 14,
   },
   pos: {
-    marginBottom: 12
-  }
+    marginBottom: 12,
+  },
 });
 
 const Home = ({
   transcripts,
+  setTranscripts,
   folders,
   setFolders,
   directory,
   setDirectory,
-  posturl
+  posturl,
 }) => {
   const classes = useStyles();
   const [fileSelect, setFileSelect] = useState(false)
@@ -55,10 +56,15 @@ const Home = ({
                   if (fold) {
                     return (
                       <Folder
-                        key={Math.random()}
-                        directory={directory}
-                        setDirectory={setDirectory}
-                        fold={fold}
+                      key={Math.random()}
+                      directory={directory}
+                      setDirectory={setDirectory}
+                      fold={fold}
+                      folders={folders}
+                      setFolders={setFolders}
+                      posturl={posturl}
+                      transcripts={transcripts}
+                      setTranscripts={setTranscripts}
                       />
                     );
                   }
@@ -70,8 +76,13 @@ const Home = ({
                   setFileSelect={setFileSelect}
                   key={Math.random()}
                   directory={directory}
-                  transcript={trans}
+                  setDirectory={setDirectory}
+                  fold={fold}
+                  folders={folders}
+                  setFolders={setFolders}
                   posturl={posturl}
+                  transcripts={transcripts}
+                  setTranscripts={setTranscripts}
                   setTranscriptionData={setTranscriptionData}
                 />
               );
