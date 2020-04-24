@@ -101,6 +101,18 @@ const LandingPage = ({ redirectURL, clientID, posturl }) => {
           }
         />
       </Box>
+      <Box
+        mt="12rem"
+        backgroundColor={theme.colors.gray[3]}
+        height="55rem"
+        width="100%"
+      >
+        <img
+          className="landing-page-flowchart"
+          src={require("../media/landing_page_flow_chart.svg")}
+          alt="flow chart mapping out Scribe functionality"
+        />
+      </Box>
     </Box>
   );
 };
