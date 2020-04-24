@@ -7,7 +7,7 @@ import {
   Heading,
   NavBar,
   Link,
-  Text
+  Text,
 } from "../styled-components/StyledComponents";
 import Transcripts from "./Transcripts";
 import Reports from "./Reports";
@@ -58,16 +58,6 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
         <Button onClick={getAccessToken}>Get accessToken</Button>
         <Button onClick={LogOutClicked}>Log Out</Button>
       </NavBar>
-      <svg
-        className="background-wave"
-        viewBox="0 0 500 200"
-        preserveAspectRatio="xMinYMin meet"
-      >
-        <path
-          d="M0,200 C350,100 350,0 500,50 L500,00 L0,0 Z"
-          style={{ stroke: "none", fill: "#E4ECED" }}
-        />
-      </svg>
       {renderLocation()}
     </div>
   );
