@@ -3,7 +3,9 @@ import { ThemeProvider } from "styled-components";
 import theme from "./styled-components/theme";
 import "./App.css";
 import LandingPage from "./components/LandingPage";
-import Dashboard from "./components/Dashboard";
+// import Dashboard from "./components/Dashboard";
+import Transcripts from "./components/Transcripts";
+import axios from "axios";
 
 const clientID = "wvaVD6itTme4P9YBmPMZkg";
 
@@ -41,11 +43,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {authCode ? (
-        <Dashboard
-          setAuthCode={setAuthCode}
-          clientID={clientID}
-          redirectURL={redirectURL}
+        <Transcripts
           posturl={posturl}
+          setAuthCode={setAuthCode}
+          redirectURL={redirectURL}
         />
       ) : (
         <LandingPage

@@ -14,7 +14,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import FolderIcon from "@material-ui/icons/Folder";
 
-const MainPage = ({ posturl, setLocation, location }) => {
+const MainPage = ({ setLocation, location }) => {
   const requestMeetings = () => {
     setLocation("Transcripts");
   };
