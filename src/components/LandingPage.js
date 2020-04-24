@@ -107,6 +107,23 @@ const LandingPage = ({ redirectURL, clientID, posturl }) => {
         height="55rem"
         width="100%"
       >
+        <Box
+          className="bg-wave"
+          width="100%"
+          height="50%"
+          backgroundColor={theme.colors.gray[2]}
+          borderTopLeftRadius="90%"
+        ></Box>
+        <Text
+          mb="5rem"
+          textAlign="center"
+          color={theme.colors.blue}
+          fontSize="20pt"
+        >
+          Record meetings to the cloud on Zoom. Sign into <b>Scribe</b> with
+          your Zoom account. View your recorded meetings, Get transcripts of
+          your meetings, and detailed reports.
+        </Text>
         <img
           className="landing-page-flowchart"
           src={require("../media/landing_page_flow_chart.svg")}
