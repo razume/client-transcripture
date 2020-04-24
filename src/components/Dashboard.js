@@ -23,12 +23,6 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
     window.location.href = redirectURL;
   };
 
-  const getAccessToken = () => {
-    axios
-      .get(`${posturl}/api/token`)
-      .then((res) => console.log("token acquired ", res.data.accessToken));
-  };
-
   const renderLocation = () => {
     if (location === "") {
       return (
@@ -55,7 +49,6 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
             alt=""
           />
         </Box>
-        <Button onClick={getAccessToken}>Get accessToken</Button>
         <Button onClick={LogOutClicked}>Log Out</Button>
       </NavBar>
       {renderLocation()}
