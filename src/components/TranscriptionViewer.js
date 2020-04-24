@@ -9,10 +9,15 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Box style={{ padding: "5rem" }} width="30rem" id="PutSampleVideo">
-                <button onClick={() => setFileSelect(false)}> Go back</button>
-                <video src={TranscriptionData.playUrl} controls></video>
-                <p style={{ whiteSpace: "pre-line" }}>{TranscriptionData.content}</p>
+            <Box className="TranscriptViewerBox">
+                <button  style={{width: "5rem"}} onClick={() => setFileSelect(false)}> Go back</button>
+                <div>
+                <video style={{width: "50vw", minWidth: "500px"}} src={TranscriptionData.playUrl} controls></video>
+                </div>
+                <br/>
+                <div className="Transcript_Viewer_Text">
+                <span>{TranscriptionData.content}</span>
+                </div>
             </Box>
         </ThemeProvider>
     );
