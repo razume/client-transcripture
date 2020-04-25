@@ -13,6 +13,8 @@ import {
 } from "@material-ui/core";
 import Create from "./folder-system/Create";
 function Transcripts({
+  requestReports,
+  LogOutClicked,
   setLocation,
   accessTokenSaved,
   posturl,
@@ -46,16 +48,6 @@ function Transcripts({
     axios
       .get(posturl + "/api/db/transcripts")
       .then((res) => setTranscripts(res.data));
-  };
-
-  const LogOutClicked = () => {
-    localStorage.removeItem("code");
-    setAuthCode("");
-    window.location.href = redirectURL;
-  };
-
-  const requestReports = () => {
-    setLocation("Reports");
   };
 
   useEffect(() => {
@@ -92,7 +84,7 @@ function Transcripts({
         </Box>
       </NavBar>
       <Box style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ padding: "1.5rem" }}>
+        <div style={{ padding: "1rem" }}>
           <h2>Welcome User!</h2>
           <Create
             directory={directory}
@@ -100,6 +92,11 @@ function Transcripts({
             setFolders={setFolders}
             posturl={posturl}
           />
+          <div>
+            <Button size="large">
+              <Link onClick={requestReports}>Detailed Reports</Link>
+            </Button>
+          </div>
         </div>
         <div>
           <Breadcrumbs style={{ marginLeft: "5rem" }} aria-label="breadcrumb">
@@ -148,8 +145,8 @@ function Transcripts({
             </Box>
           </Box>
         ) : (
-          ""
-        )}
+            ""
+          )}
       </Box>
     </ThemeProvider>
   );
