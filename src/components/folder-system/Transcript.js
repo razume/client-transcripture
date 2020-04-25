@@ -100,7 +100,7 @@ const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setF
   };
 
   return (
-    <div ref={drag} style={{ display: visible, opacity }} className="doc" onClick={() => { setTranscriptionData(transcript); setFileSelect(true) }}>
+    <div ref={drag} style={{ display: visible, opacity }} className="doc" onDoubleClick={() => { setTranscriptionData(transcript); setFileSelect(true) }}>
       <hr />
       <hr />
       <hr />

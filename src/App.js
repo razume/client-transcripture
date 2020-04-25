@@ -3,7 +3,9 @@ import { ThemeProvider } from "styled-components";
 import theme from "./styled-components/theme";
 import "./App.css";
 import LandingPage from "./components/LandingPage";
-import Dashboard from "./components/Dashboard";
+// import Dashboard from "./components/Dashboard";
+import Transcripts from "./components/Transcripts";
+import axios from "axios";
 
 const clientID = "wvaVD6itTme4P9YBmPMZkg";
 
@@ -20,6 +22,10 @@ if (process.env.NODE_ENV === "development") {
 
 function App() {
   const [authCode, setAuthCode] = useState("");
+  const [accessTokenSaved, setAccessTokenSaved] = useState(false)
+
+  let [transcripts, setTranscripts] = useState([]);
+  let [folders, setFolders] = useState();
 
   useEffect(() => {
     // Getting Auth code from url
@@ -41,19 +47,27 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {authCode ? (
-        <Dashboard
-          setAuthCode={setAuthCode}
-          clientID={clientID}
-          redirectURL={redirectURL}
+        <Transcripts
+        accessTokenSaved={accessTokenSaved}
           posturl={posturl}
+          setAuthCode={setAuthCode}
+          redirectURL={redirectURL}
+          folders={folders}
+          transcripts={transcripts}
+          setFolders={setFolders}
+          setTranscripts={setTranscripts
+}
         />
       ) : (
-        <LandingPage
-          clientID={clientID}
-          redirectURL={redirectURL}
-          posturl={posturl}
-        />
-      )}
+          <LandingPage
+          setAccessTokenSaved={setAccessTokenSaved}
+            setTranscripts={setTranscripts}
+            setFolders={setFolders}
+            clientID={clientID}
+            redirectURL={redirectURL}
+            posturl={posturl}
+          />
+        )}
     </ThemeProvider>
   );
 }
