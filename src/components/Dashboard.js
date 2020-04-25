@@ -14,9 +14,8 @@ import Reports from "./Reports";
 import axios from "axios";
 import "../App.css";
 
-function Dashboard({ setAuthCode, posturl, redirectURL }) {
-  const [location, setLocation] = useState("");
-  
+function Dashboard({ accessTokenSaved, setTranscripts, location, setLocation, transcripts, setAuthCode, posturl, redirectURL, folders, setFolders }) {
+
   const LogOutClicked = () => {
     localStorage.removeItem("code");
     setAuthCode("");
@@ -24,33 +23,17 @@ function Dashboard({ setAuthCode, posturl, redirectURL }) {
   };
 
   const renderLocation = () => {
-    if (location === "") {
-      return (
-        <MainPage
-          posturl={posturl}
-          setLocation={setLocation}
-          location={location}
-        />
-      );
-    } else if (location === "Transcripts") {
-      return <Transcripts posturl={posturl} setLocation={setLocation} />;
+  if (location === "Transcript") {
+      return <Transcripts setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl}  />;
     } else if (location === "Reports") {
-      return <Reports setLocation={setLocation} />;
+      return <Reports transcripts ={transcripts} setLocation={setLocation} />;
+    } else if (location === "") {
+      return <Transcripts setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl} setLocation={setLocation} />;
     }
   };
 
   return (
     <div>
-      <NavBar>
-        <Box display="flex" flexDirection="row" alignItems="center">
-          <img
-            className="top-left-logo"
-            src={require("../media/scribe_circle_dark.svg")}
-            alt=""
-          />
-        </Box>
-        <Button onClick={LogOutClicked}>Log Out</Button>
-      </NavBar>
       {renderLocation()}
     </div>
   );
