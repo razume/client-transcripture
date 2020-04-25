@@ -74,17 +74,13 @@ function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redi
         </Box>
       </NavBar>
       <Box>
-        <Box width="30rem" id="PutSampleVideo">
-          Access all the transcripts of your recorded Zoom meetings
-        </Box>
-        <div>
-          <h4>Current directory: {directory[directory.length - 1]}</h4>
-          <Breadcrumbs aria-label="breadcrumb">
+        <div >
+        <Breadcrumbs  style={{marginLeft: "5rem"}} aria-label="breadcrumb">
             {directory.map((directory) => {
               return <Typography key={Math.random()}>{directory}</Typography>;
             })}
           </Breadcrumbs>
-          {directory.length > 1 && <button onClick={climbTree}>&#8592;</button>}
+          {directory.length > 1 && <button style={{marginLeft: "5rem"}} onClick={climbTree}>&#8592;</button>}
           <Home
             directory={directory}
             setDirectory={setDirectory}
