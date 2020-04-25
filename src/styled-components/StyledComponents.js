@@ -72,9 +72,7 @@ export const NavBar = styled.div`
     alignItems: "center",
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    backgroundColor: "#FFFFFF",
-    boxShadow: "0px 2px 4px 0px rgba(197,197,197,0.5)",
-    padding: ".5rem"
+    padding: ".5rem",
   }}
   ${color}
 `;

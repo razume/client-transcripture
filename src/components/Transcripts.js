@@ -77,7 +77,7 @@ function Transcripts({
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../media/scribe_circle_dark.svg")}
+            src={require("../media/scribe_logo_text.svg")}
             alt=""
           />
         </Box>
