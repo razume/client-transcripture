@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import theme from "../styled-components/theme";
 import {
   Box,
@@ -12,7 +12,7 @@ import { Button, Link } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
-const LandingPage = ({ redirectURL, clientID, posturl }) => {
+const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setFolders, setTranscripts }) => {
   const url =
     "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
     clientID +
@@ -32,6 +32,7 @@ const LandingPage = ({ redirectURL, clientID, posturl }) => {
         })
         .then(function (response) {
           console.log("Request for new Access token Response:", response);
+          setAccessTokenSaved(true)
         })
         .catch(function (error) {
           console.log(error);
