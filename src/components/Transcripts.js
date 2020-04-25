@@ -9,7 +9,7 @@ import {
   Button,
   Breadcrumbs,
   Link,
-  LinearProgress,
+  CircularProgress,
 } from "@material-ui/core";
 
 function Transcripts({
@@ -24,6 +24,7 @@ function Transcripts({
 }) {
   const [location, setLocation] = useState("");
   let [directory, setDirectory] = useState(["Home"]);
+  let [isRequesting, setIsRequesting] = useState(false);
 
   const getFolders = () => {
     axios
@@ -32,10 +33,14 @@ function Transcripts({
   };
 
   const requestMeetings = () => {
+    setIsRequesting(true);
     axios.get(posturl + "/api/recordings").then(() => {
       axios
         .get(posturl + "/api/db/transcripts")
-        .then((res) => setTranscripts(res.data));
+        .then((res) => {
+          setTranscripts(res.data);
+        })
+        .then(() => setIsRequesting(false));
     });
 
     axios
@@ -87,15 +92,7 @@ function Transcripts({
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
-      {/* if request is not finished, the LinearProgress component should be rendered */}
-      {!transcripts ? (
-        <Box width="60%" display="flex" justifyContent="center">
-          <Text>Fetching transcripts . . .</Text>
-          <LinearProgress />
-        </Box>
-      ) : (
-        ""
-      )}
+
       <Box>
         <div>
           <Breadcrumbs style={{ marginLeft: "5rem" }} aria-label="breadcrumb">
@@ -118,6 +115,31 @@ function Transcripts({
             setTranscripts={setTranscripts}
           />
         </div>
+      </Box>
+      <Box display="flex" justifyContent="center">
+        {/* if request is not finished, the LinearProgress component should be rendered */}
+        {isRequesting ? (
+          <Box
+            display="flex"
+            width="50%"
+            backgroundColor="dodgerblue"
+            color="white"
+            justifyContent="space-around"
+            borderRadius="4px"
+            alignItems="center"
+            style={{
+              position: "fixed",
+              bottom: 2,
+            }}
+          >
+            <Text fontSize="16pt" fontWeight={500}>
+              fetching transctipts . . . . .
+            </Text>{" "}
+            <CircularProgress />
+          </Box>
+        ) : (
+          ""
+        )}
       </Box>
     </ThemeProvider>
   );

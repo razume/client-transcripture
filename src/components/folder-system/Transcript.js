@@ -32,7 +32,15 @@ const useStyles = makeStyles({
 //The api route is a post to /api/db/transcripts. It take a match query (the transcriptionFilePath / req.body.transcriptionFilePath)
 //and the updated ancestor array ( req.body.newAncestors ) the array gives the hierarchy from top to bottom i.e ([Home, Meetings, Test]) with test being the directory that the transcription resides
 
-const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setFileSelect, transcripts, setTranscripts}) => {
+const Transcript = ({
+  transcript,
+  directory,
+  posturl,
+  setTranscriptionData,
+  setFileSelect,
+  transcripts,
+  setTranscripts,
+}) => {
   const [naming, setNaming] = useState(false);
   //I dont know if you need to pass the setTranscript function or not, you may be able to update the transcript.ancestors directly
   const name = transcript.transcriptionFilePath; //Provide transcript ancestor array to match current directory and target directory
@@ -58,7 +66,6 @@ const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setF
       isDragging: monitor.isDragging(),
     }),
   });
-
 
   const opacity = isDragging ? 0.3 : 1;
   const currentDirectory = directory[directory.length - 1];
@@ -99,7 +106,15 @@ const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setF
   };
 
   return (
-    <div ref={drag} style={{ display: visible, opacity }} className="doc" onDoubleClick={() => { setTranscriptionData(transcript); setFileSelect(true) }}>
+    <div
+      ref={drag}
+      style={{ display: visible, opacity }}
+      className="doc"
+      onDoubleClick={() => {
+        setTranscriptionData(transcript);
+        setFileSelect(true);
+      }}
+    >
       <hr />
       <hr />
       <hr />
