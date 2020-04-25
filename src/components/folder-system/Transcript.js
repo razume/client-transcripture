@@ -52,7 +52,6 @@ const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setF
             newAncestors: updatedAncestors,
           })
           .then((res) => console.log("updated ancestor", res));
-        alert(`You dropped ${item.name} into ${dropResult.name}!`); //What to do when transcript is dropped on folder
       }
     },
     collect: (monitor) => ({

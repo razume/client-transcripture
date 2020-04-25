@@ -6,8 +6,7 @@ import axios from "axios";
 import Home from "./folder-system/Home.js";
 import { Typography, Button, Breadcrumbs, Link } from "@material-ui/core";
 
-function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
-  const [location, setLocation] = useState("");
+function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
   let [directory, setDirectory] = useState(["Home"]);
 
   const getFolders = () => {
@@ -42,7 +41,6 @@ function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, fold
 
   useEffect(() => {
     if (accessTokenSaved) {
-      console.log("HOW MANY TIMES AM I BEING CALLED?")
       requestMeetings();
       getFolders();
     }
@@ -76,17 +74,13 @@ function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, fold
         </Box>
       </NavBar>
       <Box>
-        <Box width="30rem" id="PutSampleVideo">
-          Access all the transcripts of your recorded Zoom meetings
-        </Box>
-        <div>
-          <h4>Current directory: {directory[directory.length - 1]}</h4>
-          <Breadcrumbs aria-label="breadcrumb">
+        <div >
+        <Breadcrumbs  style={{marginLeft: "5rem"}} aria-label="breadcrumb">
             {directory.map((directory) => {
               return <Typography key={Math.random()}>{directory}</Typography>;
             })}
           </Breadcrumbs>
-          {directory.length > 1 && <button onClick={climbTree}>&#8592;</button>}
+          {directory.length > 1 && <button style={{marginLeft: "5rem"}} onClick={climbTree}>&#8592;</button>}
           <Home
             directory={directory}
             setDirectory={setDirectory}
