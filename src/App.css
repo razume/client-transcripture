@@ -16,7 +16,7 @@ body {
 }
 
 .landing-page-flowchart {
-  height: 900px;
+  height: 800px;
 }
 
 .background-wave {
@@ -33,6 +33,11 @@ body {
   bottom: 0;
   right: 0;
   z-index: 1;
+}
+
+.bg-wave {
+  position: absolute;
+  z-index: -1;
 }
 
 .line {

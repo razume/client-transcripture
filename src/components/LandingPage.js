@@ -12,7 +12,14 @@ import { Button, Link } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
-const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setFolders, setTranscripts }) => {
+const LandingPage = ({
+  setAccessTokenSaved,
+  redirectURL,
+  clientID,
+  posturl,
+  setFolders,
+  setTranscripts,
+}) => {
   const url =
     "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
     clientID +
@@ -32,7 +39,7 @@ const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setF
         })
         .then(function (response) {
           console.log("Request for new Access token Response:", response);
-          setAccessTokenSaved(true)
+          setAccessTokenSaved(true);
         })
         .catch(function (error) {
           console.log(error);
@@ -42,77 +49,222 @@ const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setF
 
   return (
     <Box>
-      <NavBar>
-        <Box display="flex" flexDirection="row" alignItems="center">
-          <img
-            className="top-left-logo"
-            src={require("../media/scribe_circle_dark.svg")}
+      <Box display="flex" flexDirection="column" height="50rem">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1340 320"
+          style={{ zIndex: -1, position: "absolute" }}
+        >
+          <path
+            fill="#a2d9ff"
+            fill-opacity="0.5"
+            d="M0,96L30,128C60,160,120,224,180,229.3C240,235,300,181,360,133.3C420,85,480,43,540,21.3C600,0,660,0,720,53.3C780,107,840,213,900,240C960,267,1020,213,1080,160C1140,107,1200,53,1260,80C1320,107,1380,213,1410,266.7L1440,320L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
+          ></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="300 0 1040 320"
+          style={{ zIndex: -1, position: "absolute", marginTop: "22.5rem" }}
+        >
+          <path
+            fill="#a2d9ff"
+            fill-opacity="0.3"
+            d="M0,160L24,133.3C48,107,96,53,144,32C192,11,240,21,288,37.3C336,53,384,75,432,101.3C480,128,528,160,576,186.7C624,213,672,235,720,218.7C768,203,816,149,864,144C912,139,960,181,1008,197.3C1056,213,1104,203,1152,176C1200,149,1248,107,1296,117.3C1344,128,1392,192,1416,224L1440,256L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"
+          ></path>
+        </svg>
+        <NavBar>
+          <Box display="flex" flexDirection="row" alignItems="center">
+            <img
+              className="top-left-logo"
+              src={require("../media/scribe_logo_text.svg")}
+            />
+          </Box>
+          <Box>
+            <Button>About</Button>
+            <Button href={url}>Log in</Button>
+          </Box>
+        </NavBar>
+
+        <Box display="flex" justifyContent="center">
+          <Heading
+            textAlign="center"
+            fontWeight="500"
+            fontSize="24pt"
+            minWidth="25rem"
+            maxWidth="50rem"
+            color={theme.colors.gray[7]}
+          >
+            Get the most out of Zoom. View your team's recorded meetings,
+            transcripts of the meetings, and reports.
+          </Heading>
+        </Box>
+
+        <Box
+          display="flex"
+          justifyContent="space-around"
+          flexWrap="wrap"
+          mt={5}
+        >
+          <PostCard
+            imageUrl={require("../media/typewriter.jpg")}
+            cardTitle={"Transcripts"}
+            cardBody={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
+          />
+          <PostCard
+            imageUrl={require("../media/camcorder.jpg")}
+            cardTitle={"Recorded Meetings"}
+            cardBody={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
+          />
+
+          <PostCard
+            imageUrl={require("../media/calculator.jpg")}
+            cardTitle={"Reports"}
+            cardBody={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+            }
           />
         </Box>
-        <Box>
-          <Button>About</Button>
-          <Button href={url}>Log in</Button>
-        </Box>
-      </NavBar>
-      <svg
-        className="background-wave"
-        viewBox="0 0 500 200"
-        preserveAspectRatio="xMinYMin meet"
-      >
-        <path
-          d="M0,200 C350,100 350,0 500,50 L500,00 L0,0 Z"
-          style={{ stroke: "none", fill: "#E4ECED" }}
-        />
-      </svg>
-
-      <Box display="flex" justifyContent="center">
-        <Heading
-          textAlign="center"
-          fontWeight="400"
-          minWidth="25rem"
-          maxWidth="50rem"
-          color={theme.colors.gray[6]}
-        >
-          Get the most out of Zoom. View your team's recorded meetings,
-          transcripts of the meetings, and reports.
-        </Heading>
       </Box>
 
-      <Box display="flex" justifyContent="space-around" flexWrap="wrap" mt={5}>
-        <PostCard
-          imageUrl={require("../media/typewriter.jpg")}
-          cardTitle={"Transcripts"}
-          cardBody={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-          }
-        />
-        <PostCard
-          imageUrl={require("../media/camcorder.jpg")}
-          cardTitle={"Recorded Meetings"}
-          cardBody={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-          }
-        />
-
-        <PostCard
-          imageUrl={require("../media/calculator.jpg")}
-          cardTitle={"Reports"}
-          cardBody={
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-          }
-        />
-      </Box>
       <Box
-        mt="12rem"
-        backgroundColor={theme.colors.gray[3]}
         height="55rem"
         width="100%"
+        backgroundColor="#36404f"
+        style={{ zIndex: -2, position: "absolute" }}
       >
-        <img
-          className="landing-page-flowchart"
-          src={require("../media/landing_page_flow_chart.svg")}
-          alt="flow chart mapping out Scribe functionality"
-        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1440 320"
+          style={{ zIndex: -1, position: "absolute" }}
+        >
+          <path
+            fill="#404b5c"
+            fill-opacity="1"
+            d="M0,96L30,128C60,160,120,224,180,229.3C240,235,300,181,360,133.3C420,85,480,43,540,21.3C600,0,660,0,720,53.3C780,107,840,213,900,240C960,267,1020,213,1080,160C1140,107,1200,53,1260,80C1320,107,1380,213,1410,266.7L1440,320L1440,0L1410,0C1380,0,1320,0,1260,0C1200,0,1140,0,1080,0C1020,0,960,0,900,0C840,0,780,0,720,0C660,0,600,0,540,0C480,0,420,0,360,0C300,0,240,0,180,0C120,0,60,0,30,0L0,0Z"
+          ></path>
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 320"
+          style={{ zIndex: -1, position: "absolute", marginTop: "20rem" }}
+        >
+          <path
+            fill="#2F3A4D"
+            fill-opacity="1"
+            d="M0,32L20,48C40,64,80,96,120,96C160,96,200,64,240,48C280,32,320,32,360,74.7C400,117,440,203,480,208C520,213,560,139,600,122.7C640,107,680,149,720,170.7C760,192,800,192,840,202.7C880,213,920,235,960,229.3C1000,224,1040,192,1080,165.3C1120,139,1160,117,1200,112C1240,107,1280,117,1320,117.3C1360,117,1400,107,1420,101.3L1440,96L1440,320L1420,320C1400,320,1360,320,1320,320C1280,320,1240,320,1200,320C1160,320,1120,320,1080,320C1040,320,1000,320,960,320C920,320,880,320,840,320C800,320,760,320,720,320C680,320,640,320,600,320C560,320,520,320,480,320C440,320,400,320,360,320C320,320,280,320,240,320C200,320,160,320,120,320C80,320,40,320,20,320L0,320Z"
+          ></path>
+        </svg>
+        <Box mt="5rem">
+          <Text
+            mb="5rem"
+            textAlign="center"
+            color="white"
+            fontSize="20pt"
+            fontWeight="500"
+          >
+            Why Scribe?
+          </Text>
+        </Box>
+
+        <Box
+          display="flex"
+          flexDirection="row"
+          height="27rem"
+          color="white"
+          px="3rem"
+        >
+          <Box
+            display="flex"
+            flexDirection="column"
+            flex="1"
+            alignItems="center"
+            justifyContent="space-around"
+          >
+            <Box flex="1" width="27rem">
+              <img
+                src={require("../media/dollar_icon.svg")}
+                style={{ height: "40px" }}
+              />
+              <h3>Free to use</h3>
+              <Text>
+                Don't worry. We won't ask you for credit card information.
+              </Text>
+            </Box>
+            <Box flex="1" width="27rem">
+              <img
+                src={require("../media/check_icon.svg")}
+                style={{ height: "40px" }}
+              />
+              <h3>Ease of use</h3>
+              <Text>
+                You won't need to comb through documentation and tutorials to be
+                able to use Scribe. Sign in and you're a few clicks away from
+                improving productivity.
+              </Text>
+            </Box>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            flex="1"
+            alignItems="center"
+          >
+            <Box flex="1" width="27rem">
+              <img
+                src={require("../media/folder_icon.svg")}
+                style={{ height: "40px" }}
+              />
+              <h3>Familiar Design</h3>
+              <Text>
+                We use an intuitive folder structure interface similar to what
+                you use on a desktop computer.
+              </Text>
+            </Box>
+            <Box flex="1" width="27rem">
+              <img
+                src={require("../media/rocket_icon.svg")}
+                style={{ height: "36px" }}
+              />
+              <h3>Technology you can trust</h3>
+              <Text>
+                Powered by Google, Scribe transcriptions can pick out multiple
+                speakers and provide industry leading accuracy.
+              </Text>
+            </Box>
+          </Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            flex="1"
+            alignItems="center"
+          >
+            <Box flex="1" width="27rem">
+              <img
+                src={require("../media/lightning_icon.svg")}
+                style={{ height: "40px" }}
+              />
+              <h3>Fast</h3>
+              <Text>Transcribe entire meetings in a few minutes or less.</Text>
+            </Box>
+            <Box flex="1" width="27rem">
+              <img
+                src={require("../media/lock_icon.svg")}
+                style={{ height: "36px" }}
+              />
+              <h3>Secure</h3>
+              <Text>
+                You can rest easy knowing your information is secured with
+                Oauth2.
+              </Text>
+            </Box>
+          </Box>
+          <Box display="flex" flexDirection="column"></Box>
+          <Box display="flex" flexDirection="column"></Box>
+        </Box>
       </Box>
     </Box>
   );
