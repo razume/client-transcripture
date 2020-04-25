@@ -10,6 +10,9 @@ import { useDrag } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import axios from "axios";
 
+//Media
+import FileImg from "../../media/file_img.svg"
+
 const useStyles = makeStyles({
   root: {
     width: "10vw",
@@ -99,21 +102,13 @@ const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setF
   };
 
   return (
-    <div ref={drag} style={{ display: visible, opacity }} className="doc" onDoubleClick={() => { setTranscriptionData(transcript); setFileSelect(true) }}>
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
-      <hr />
+    <div ref={drag} style={{ display: visible, opacity, width: "5vw", padding: '1rem' }}  onDoubleClick={() => { setTranscriptionData(transcript); setFileSelect(true) }}>
+      <img src={FileImg}/>
       <div
-        onMouseUp={handleRename}
+       onMouseUp={handleRename}
         onContextMenu={(e) => e.preventDefault()}
         className="doc-title"
-      >
+        >
         {naming ? (
           <input
             onKeyDown={handleInput}
@@ -124,8 +119,8 @@ const Transcript = ({ transcript, directory, posturl, setTranscriptionData, setF
         ) : (
           <h3>{transcript.name}</h3>
         )}
+        </div>
       </div>
-    </div>
   );
 };
 
