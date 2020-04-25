@@ -18,7 +18,7 @@ const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setF
     clientID +
     "&redirect_uri=" +
     redirectURL;
-
+  
   useEffect(() => {
     if (window.location.href.indexOf("code") > -1) {
       let currenturl = window.location.href;

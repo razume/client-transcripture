@@ -6,8 +6,7 @@ import axios from "axios";
 import Home from "./folder-system/Home.js";
 import { Typography, Button, Breadcrumbs, Link } from "@material-ui/core";
 
-function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
-  const [location, setLocation] = useState("");
+function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
   let [directory, setDirectory] = useState(["Home"]);
 
   const getFolders = () => {
@@ -42,7 +41,6 @@ function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, fold
 
   useEffect(() => {
     if (accessTokenSaved) {
-      console.log("HOW MANY TIMES AM I BEING CALLED?")
       requestMeetings();
       getFolders();
     }

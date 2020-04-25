@@ -6,7 +6,7 @@ import LandingPage from "./components/LandingPage";
 // import Dashboard from "./components/Dashboard";
 import Transcripts from "./components/Transcripts";
 import axios from "axios";
-
+import Dashboard from "./components/Dashboard"
 const clientID = "wvaVD6itTme4P9YBmPMZkg";
 
 // Set Dev variables and Prod Variables
@@ -23,6 +23,7 @@ if (process.env.NODE_ENV === "development") {
 function App() {
   const [authCode, setAuthCode] = useState("");
   const [accessTokenSaved, setAccessTokenSaved] = useState(false)
+  const [location, setLocation] = useState("Transcript");
 
   let [transcripts, setTranscripts] = useState([]);
   let [folders, setFolders] = useState();
@@ -47,25 +48,28 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {authCode ? (
-        <Transcripts
+        <Dashboard 
+        setLocation={setLocation}
+        location={location}
+        setAuthCode={setAuthCode} 
         accessTokenSaved={accessTokenSaved}
-          posturl={posturl}
-          setAuthCode={setAuthCode}
-          redirectURL={redirectURL}
-          folders={folders}
-          transcripts={transcripts}
+        setAccessTokenSaved={setAccessTokenSaved}
+          setTranscripts={setTranscripts}
           setFolders={setFolders}
-          setTranscripts={setTranscripts
-}
-        />
+          folders={folders}
+          clientID={clientID}
+          redirectURL={redirectURL}
+          posturl={posturl}
+          transcripts={transcripts} />
       ) : (
           <LandingPage
-          setAccessTokenSaved={setAccessTokenSaved}
+            setAccessTokenSaved={setAccessTokenSaved}
             setTranscripts={setTranscripts}
             setFolders={setFolders}
             clientID={clientID}
             redirectURL={redirectURL}
             posturl={posturl}
+            transcripts={transcripts}
           />
         )}
     </ThemeProvider>
