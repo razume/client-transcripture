@@ -1,12 +1,27 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../styled-components/theme";
-import { Box, NavBar } from "../styled-components/StyledComponents";
+import { Box, NavBar, Text } from "../styled-components/StyledComponents";
 import axios from "axios";
 import Home from "./folder-system/Home.js";
-import { Typography, Button, Breadcrumbs, Link } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Breadcrumbs,
+  Link,
+  LinearProgress,
+} from "@material-ui/core";
 
-function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
+function Transcripts({
+  accessTokenSaved,
+  posturl,
+  setAuthCode,
+  redirectURL,
+  folders,
+  transcripts,
+  setFolders,
+  setTranscripts,
+}) {
   const [location, setLocation] = useState("");
   let [directory, setDirectory] = useState(["Home"]);
 
@@ -17,13 +32,11 @@ function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, fold
   };
 
   const requestMeetings = () => {
-    axios
-      .get(posturl + "/api/recordings")
-      .then(() => {
-        axios
-          .get(posturl + "/api/db/transcripts")
-          .then((res) => setTranscripts(res.data));
-      });
+    axios.get(posturl + "/api/recordings").then(() => {
+      axios
+        .get(posturl + "/api/db/transcripts")
+        .then((res) => setTranscripts(res.data));
+    });
 
     axios
       .get(posturl + "/api/db/transcripts")
@@ -42,11 +55,11 @@ function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, fold
 
   useEffect(() => {
     if (accessTokenSaved) {
-      console.log("HOW MANY TIMES AM I BEING CALLED?")
+      console.log("HOW MANY TIMES AM I BEING CALLED?");
       requestMeetings();
       getFolders();
     }
-  }, [accessTokenSaved])
+  }, [accessTokenSaved]);
 
   const climbTree = () => {
     if (directory.length > 1) {
@@ -75,6 +88,15 @@ function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, fold
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
+      {/* if request is not finished, the LinearProgress component should be rendered */}
+      {!transcripts ? (
+        <Box width="60%" display="flex" justifyContent="center">
+          <Text>Fetching transcripts . . .</Text>
+          <LinearProgress />
+        </Box>
+      ) : (
+        ""
+      )}
       <Box>
         <Box width="30rem" id="PutSampleVideo">
           Access all the transcripts of your recorded Zoom meetings
