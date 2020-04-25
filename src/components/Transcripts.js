@@ -4,25 +4,10 @@ import theme from "../styled-components/theme";
 import { Box, NavBar, Text } from "../styled-components/StyledComponents";
 import axios from "axios";
 import Home from "./folder-system/Home.js";
-import {
-  Typography,
-  Button,
-  Breadcrumbs,
-  Link,
-  CircularProgress,
-} from "@material-ui/core";
+import { Typography, Button, Breadcrumbs, Link } from "@material-ui/core";
+import Create from "./folder-system/Create"
+function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
 
-function Transcripts({
-  accessTokenSaved,
-  posturl,
-  setAuthCode,
-  redirectURL,
-  folders,
-  transcripts,
-  setFolders,
-  setTranscripts,
-}) {
-  const [location, setLocation] = useState("");
   let [directory, setDirectory] = useState(["Home"]);
   let [isRequesting, setIsRequesting] = useState(false);
 
@@ -86,16 +71,23 @@ function Transcripts({
             alt=""
           />
         </Box>
-
         <Box>
           <Link onClick={requestReports}>Reports</Link>
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
-
-      <Box>
-        <div>
-          <Breadcrumbs style={{ marginLeft: "5rem" }} aria-label="breadcrumb">
+      <Box style={{display: "flex", flexDirection: "row"}}>
+      <div style={{padding: "1.5rem"}}>
+        <h2>Welcome User!</h2>
+      <Create
+            directory={directory}
+            folders={folders}
+            setFolders={setFolders}
+            posturl={posturl}
+          />
+          </div>
+        <div >
+        <Breadcrumbs  style={{marginLeft: "5rem"}} aria-label="breadcrumb">
             {directory.map((directory) => {
               return <Typography key={Math.random()}>{directory}</Typography>;
             })}

@@ -10,11 +10,12 @@ import ItemTypes from "./ItemTypes";
 import axios from "axios";
 import Transcript from "./Transcript";
 
+//Media
+import FolderImg from "../../media/folder_img.svg"
 const useStyles = makeStyles({
   root: {
     width: "10vw",
     height: "10vh",
-    margin: "3rem",
   },
   bullet: {
     display: "inline-block",
@@ -93,6 +94,7 @@ const Folder = ({
 
   return (
     <div ref={drop} onDoubleClick={handleClick} className="folder">
+      <img src={FolderImg}></img>
       <h2>{fold} </h2>
       <button onClick={handleDelete}>X</button>
     </div>

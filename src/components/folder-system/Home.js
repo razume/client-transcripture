@@ -95,12 +95,6 @@ const Home = ({
               })}
             </DndProvider>
           </div>
-          <Create
-            directory={directory}
-            folders={folders}
-            setFolders={setFolders}
-            posturl={posturl}
-          />
         </div>
       )}
     </div>

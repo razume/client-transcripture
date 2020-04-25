@@ -54,10 +54,10 @@ body {
   flex-flow: column wrap;
   padding: 5rem;
   margin: 3rem;
-  background-color: #adcad6;
-  height: 50vh;
+  height: 80vh;
   min-width: 60vw;
   overflow: scroll;
+  
 }
 
 .folder {
@@ -97,7 +97,8 @@ body {
 
 .doc-title {
   word-wrap: break-word;
-  margin-top: 3vh;
+  margin-top: 1vh;
+  width: 10vw;
 }
 
 .Transcript_Viewer_Text {
