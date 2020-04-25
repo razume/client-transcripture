@@ -128,21 +128,24 @@ function Transcripts({
         {isRequesting ? (
           <Box
             display="flex"
-            width="50%"
+            width="21rem"
             backgroundColor="dodgerblue"
             color="white"
-            justifyContent="space-around"
+            justifyContent="space-between"
             borderRadius="4px"
             alignItems="center"
             style={{
               position: "fixed",
               bottom: 2,
+              right: 5,
             }}
           >
-            <Text fontSize="16pt" fontWeight={500}>
+            <Text ml="2rem" fontSize="14pt" fontWeight={500}>
               fetching transctipts . . . . .
             </Text>{" "}
-            <CircularProgress />
+            <Box mr="2rem">
+              <CircularProgress size={30} />
+            </Box>
           </Box>
         ) : (
           ""
