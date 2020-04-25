@@ -1,13 +1,30 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../styled-components/theme";
-import { Box, NavBar } from "../styled-components/StyledComponents";
+import { Box, NavBar, Text } from "../styled-components/StyledComponents";
 import axios from "axios";
 import Home from "./folder-system/Home.js";
-import { Typography, Button, Breadcrumbs, Link } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Breadcrumbs,
+  Link,
+  CircularProgress,
+} from "@material-ui/core";
 
-function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
+function Transcripts({
+  accessTokenSaved,
+  posturl,
+  setAuthCode,
+  redirectURL,
+  folders,
+  transcripts,
+  setFolders,
+  setTranscripts,
+}) {
+  const [location, setLocation] = useState("");
   let [directory, setDirectory] = useState(["Home"]);
+  let [isRequesting, setIsRequesting] = useState(false);
 
   const getFolders = () => {
     axios
@@ -16,13 +33,15 @@ function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redi
   };
 
   const requestMeetings = () => {
-    axios
-      .get(posturl + "/api/recordings")
-      .then(() => {
-        axios
-          .get(posturl + "/api/db/transcripts")
-          .then((res) => setTranscripts(res.data));
-      });
+    setIsRequesting(true);
+    axios.get(posturl + "/api/recordings").then(() => {
+      axios
+        .get(posturl + "/api/db/transcripts")
+        .then((res) => {
+          setTranscripts(res.data);
+        })
+        .then(() => setIsRequesting(false));
+    });
 
     axios
       .get(posturl + "/api/db/transcripts")
@@ -44,7 +63,7 @@ function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redi
       requestMeetings();
       getFolders();
     }
-  }, [accessTokenSaved])
+  }, [accessTokenSaved]);
 
   const climbTree = () => {
     if (directory.length > 1) {
@@ -63,7 +82,7 @@ function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redi
         <Box display="flex" flexDirection="row" alignItems="center">
           <img
             className="top-left-logo"
-            src={require("../media/scribe_circle_dark.svg")}
+            src={require("../media/scribe_logo_text.svg")}
             alt=""
           />
         </Box>
@@ -73,14 +92,19 @@ function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redi
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
+
       <Box>
-        <div >
-        <Breadcrumbs  style={{marginLeft: "5rem"}} aria-label="breadcrumb">
+        <div>
+          <Breadcrumbs style={{ marginLeft: "5rem" }} aria-label="breadcrumb">
             {directory.map((directory) => {
               return <Typography key={Math.random()}>{directory}</Typography>;
             })}
           </Breadcrumbs>
-          {directory.length > 1 && <button style={{marginLeft: "5rem"}} onClick={climbTree}>&#8592;</button>}
+          {directory.length > 1 && (
+            <button style={{ marginLeft: "5rem" }} onClick={climbTree}>
+              &#8592;
+            </button>
+          )}
           <Home
             directory={directory}
             setDirectory={setDirectory}
@@ -91,6 +115,31 @@ function Transcripts({ setLocation, accessTokenSaved, posturl, setAuthCode, redi
             setTranscripts={setTranscripts}
           />
         </div>
+      </Box>
+      <Box display="flex" justifyContent="center">
+        {/* if request is not finished, the LinearProgress component should be rendered */}
+        {isRequesting ? (
+          <Box
+            display="flex"
+            width="50%"
+            backgroundColor="dodgerblue"
+            color="white"
+            justifyContent="space-around"
+            borderRadius="4px"
+            alignItems="center"
+            style={{
+              position: "fixed",
+              bottom: 2,
+            }}
+          >
+            <Text fontSize="16pt" fontWeight={500}>
+              fetching transctipts . . . . .
+            </Text>{" "}
+            <CircularProgress />
+          </Box>
+        ) : (
+          ""
+        )}
       </Box>
     </ThemeProvider>
   );
