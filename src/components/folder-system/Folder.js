@@ -65,7 +65,9 @@ const Folder = ({
             transcript.ancestors[transcript.ancestors.length - 1];
           if (currentDir == fold) {
             let newTranscriptAncestors = transcript.ancestors;
-            newTranscriptAncestors.pop();
+            if (newTranscriptAncestors > 1) {
+              newTranscriptAncestors.pop();
+            }
             axios.post(posturl + "/api/db/transcripts", {
               transcriptionFilePath: transcript.transcriptionFilePath,
               newAncestor: newTranscriptAncestors,
