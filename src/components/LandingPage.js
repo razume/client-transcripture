@@ -12,7 +12,14 @@ import { Button, Link } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
-const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setFolders, setTranscripts }) => {
+const LandingPage = ({
+  setAccessTokenSaved,
+  redirectURL,
+  clientID,
+  posturl,
+  setFolders,
+  setTranscripts,
+}) => {
   const url =
     "https://zoom.us/oauth/authorize?response_type=code&client_id=" +
     clientID +
@@ -32,7 +39,7 @@ const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setF
         })
         .then(function (response) {
           console.log("Request for new Access token Response:", response);
-          setAccessTokenSaved(true)
+          setAccessTokenSaved(true);
         })
         .catch(function (error) {
           console.log(error);
@@ -42,12 +49,7 @@ const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setF
 
   return (
     <Box>
-      <Box
-        display="flex"
-        flexDirection="column"
-        height="50rem"
-        border="3px solid red"
-      >
+      <Box display="flex" flexDirection="column" height="50rem">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1340 320"
@@ -62,7 +64,7 @@ const LandingPage = ({ setAccessTokenSaved, redirectURL, clientID, posturl, setF
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="300 0 1040 320"
-          style={{ zIndex: -1, position: "absolute", marginTop: "20rem" }}
+          style={{ zIndex: -1, position: "absolute", marginTop: "22.5rem" }}
         >
           <path
             fill="#a2d9ff"
