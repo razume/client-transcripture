@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect} from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../styled-components/theme";
 import { Box, NavBar } from "../styled-components/StyledComponents";
@@ -6,17 +6,9 @@ import axios from "axios";
 import Home from "./folder-system/Home.js";
 import { Typography, Button, Breadcrumbs, Link } from "@material-ui/core";
 
-function Transcripts({ posturl, setAuthCode, redirectURL }) {
+function Transcripts({ accessTokenSaved, posturl, setAuthCode, redirectURL, folders, transcripts, setFolders, setTranscripts }) {
   const [location, setLocation] = useState("");
   let [directory, setDirectory] = useState(["Home"]);
-  let [transcripts, setTranscripts] = useState([]);
-  let [folders, setFolders] = useState();
-
-  const LogOutClicked = () => {
-    localStorage.removeItem("code");
-    setAuthCode("");
-    window.location.href = redirectURL;
-  };
 
   const getFolders = () => {
     axios
@@ -24,32 +16,10 @@ function Transcripts({ posturl, setAuthCode, redirectURL }) {
       .then((fold) => setFolders(fold.data.folders));
   };
 
-  const requestReports = () => {
-    setLocation("Reports");
-  };
-
   const requestMeetings = () => {
     axios
       .get(posturl + "/api/recordings")
-      .then(function (response) {
-        // handle success
-        let videoLocation = document.querySelector("#PutSampleVideo");
-        console.log(videoLocation);
-        var video = document.createElement("video");
-        var transcript = document.createElement("p");
-        video.src = response.data.filePath;
-        video.controls = true;
-        video.style.width = "200px";
-        transcript.innerHTML = response.data.transcription;
-        videoLocation.append(transcript);
-        videoLocation.append(video);
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
+      .then(() => {
         axios
           .get(posturl + "/api/db/transcripts")
           .then((res) => setTranscripts(res.data));
@@ -60,10 +30,23 @@ function Transcripts({ posturl, setAuthCode, redirectURL }) {
       .then((res) => setTranscripts(res.data));
   };
 
+  const LogOutClicked = () => {
+    localStorage.removeItem("code");
+    setAuthCode("");
+    window.location.href = redirectURL;
+  };
+
+  const requestReports = () => {
+    setLocation("Reports");
+  };
+
   useEffect(() => {
-    requestMeetings();
-    getFolders();
-  }, []);
+    if (accessTokenSaved) {
+      console.log("HOW MANY TIMES AM I BEING CALLED?")
+      requestMeetings();
+      getFolders();
+    }
+  }, [accessTokenSaved])
 
   const climbTree = () => {
     if (directory.length > 1) {

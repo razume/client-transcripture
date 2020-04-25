@@ -16,7 +16,7 @@ import "../App.css";
 
 function Dashboard({ setAuthCode, posturl, redirectURL }) {
   const [location, setLocation] = useState("");
-
+  
   const LogOutClicked = () => {
     localStorage.removeItem("code");
     setAuthCode("");
