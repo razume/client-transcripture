@@ -65,6 +65,8 @@ export const Link = styled.a`
 
 export const NavBar = styled.div`
   ${{
+    backgroundColor: "#fff",
+    boxShadow: "0 2px 6px -2px gray",
     height: "3rem",
     marginBottom: "3rem",
     display: "flex",
@@ -72,9 +74,7 @@ export const NavBar = styled.div`
     alignItems: "center",
     paddingLeft: "1rem",
     paddingRight: "1rem",
-    backgroundColor: "#FFFFFF",
-    boxShadow: "0px 2px 4px 0px rgba(197,197,197,0.5)",
-    padding: ".5rem"
+    padding: ".5rem",
   }}
   ${color}
 `;
