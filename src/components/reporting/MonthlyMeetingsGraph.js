@@ -2,22 +2,22 @@ import React from "react";
 import { VictoryChart, VictoryGroup, VictoryArea } from "victory";
 const MonthlyMeetingsGraph = () => {
   return (
-    <VictoryChart width={400} height={400}>
+    <VictoryChart width={400} height={350}>
       <VictoryGroup
         style={{
-          data: { strokeWidth: 3, fillOpacity: 0.4 },
+          data: { strokeWidth: 5, fillOpacity: 0.4 },
         }}
       >
         <VictoryArea
           style={{
-            data: { fill: "cyan", stroke: "cyan" },
+            data: { fill: "#7CB4B8", stroke: "#7CB4B8" },
           }}
           data={[
-            { x: 1, y: 2 },
-            { x: 2, y: 3 },
-            { x: 3, y: 5 },
-            { x: 4, y: 4 },
-            { x: 5, y: 7 },
+            { x: "Monday", y: 1 },
+            { x: "Tuesday", y: 0 },
+            { x: "Wednesday", y: 1 },
+            { x: "Thursday", y: 2 },
+            { x: "Friday", y: 2 },
           ]}
         />
       </VictoryGroup>

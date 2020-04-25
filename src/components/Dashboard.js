@@ -22,13 +22,17 @@ function Dashboard({ accessTokenSaved, setTranscripts, location, setLocation, tr
     window.location.href = redirectURL;
   };
 
+  const requestReports = () => {
+    setLocation("Reports");
+  };
+
   const renderLocation = () => {
   if (location === "Transcript") {
-      return <Transcripts setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl}  />;
+      return <Transcripts requestReports={requestReports} LogOutClicked={LogOutClicked} setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl}  />;
     } else if (location === "Reports") {
-      return <Reports transcripts ={transcripts} setLocation={setLocation} />;
+      return <Reports requestReports={requestReports} LogOutClicked={LogOutClicked} transcripts ={transcripts} setLocation={setLocation} />;
     } else if (location === "") {
-      return <Transcripts setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl} setLocation={setLocation} />;
+      return <Transcripts requestReports={requestReports} LogOutClicked={LogOutClicked} setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl}  />;
     }
   };
 
