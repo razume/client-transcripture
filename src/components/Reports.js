@@ -4,13 +4,13 @@ import theme from "../styled-components/theme";
 import { Box, NavBar } from "../styled-components/StyledComponents";
 import {
   Typography,
-  Button,
   Breadcrumbs,
+  Button,
   Link,
   CircularProgress,
 } from "@material-ui/core";
 import TranscriptsReport from "./reporting/TranscriptsReport"
-
+import BackImg from "../media/back_img.svg"
 
 function Reports({ setLocation, transcripts, requestReports, LogOutClicked}) {
   const handleBack = () => {
@@ -32,7 +32,7 @@ function Reports({ setLocation, transcripts, requestReports, LogOutClicked}) {
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
-      <button onClick={handleBack}>Return to Dashboard</button>
+      <Button><img className="BackButton" src={BackImg} onClick={handleBack}></img></Button>
       <TranscriptsReport transcripts={transcripts} />
     </ThemeProvider>
   );

@@ -84,7 +84,7 @@ function Transcripts({
         </Box>
       </NavBar>
       <Box style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ padding: "1.5rem" }}>
+        <div style={{ padding: "1rem" }}>
           <h2>Welcome User!</h2>
           <Create
             directory={directory}
@@ -93,7 +93,9 @@ function Transcripts({
             posturl={posturl}
           />
           <div>
-          <Button size="large">  Detailed Reports </Button>
+            <Button size="large">
+              <Link onClick={requestReports}>Detailed Reports</Link>
+            </Button>
           </div>
         </div>
         <div>
@@ -143,8 +145,8 @@ function Transcripts({
             </Box>
           </Box>
         ) : (
-          ""
-        )}
+            ""
+          )}
       </Box>
     </ThemeProvider>
   );
