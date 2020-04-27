@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { useDrop } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import axios from "axios";
+import { Box } from "../../styled-components/StyledComponents";
 import Transcript from "./Transcript";
 
 //Media
@@ -96,7 +97,9 @@ const Folder = ({
 
   return (
     <div ref={drop} onDoubleClick={handleClick} className="folder">
-      <Button className="XButton" onClick={handleDelete}>X</Button>
+      <Button className="XButton" onClick={handleDelete}>
+        X
+      </Button>
       <img style={{ width: "300px", height: "200px" }} src={FolderImg}></img>
       <h2 style={{ color: "black" }}>{fold} </h2>
     </div>

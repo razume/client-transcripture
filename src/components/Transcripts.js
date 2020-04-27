@@ -40,19 +40,22 @@ function Transcripts({
   };
 
   const requestMeetings = () => {
-    setIsRequesting(true);
-    axios.get(posturl + "/api/recordings").then(() => {
+    if (!window.sessionStorage.getItem("meetingsRequested")) {
+      setIsRequesting(true);
+      axios.get(posturl + "/api/recordings").then(() => {
+        axios
+          .get(posturl + "/api/db/transcripts")
+          .then((res) => {
+            setTranscripts(res.data);
+          })
+          .then(() => setIsRequesting(false))
+          .then(() => window.sessionStorage.setItem("meetingsRequested", true));
+      });
+
       axios
         .get(posturl + "/api/db/transcripts")
-        .then((res) => {
-          setTranscripts(res.data);
-        })
-        .then(() => setIsRequesting(false));
-    });
-
-    axios
-      .get(posturl + "/api/db/transcripts")
-      .then((res) => setTranscripts(res.data));
+        .then((res) => setTranscripts(res.data));
+    }
   };
 
   useEffect(() => {
