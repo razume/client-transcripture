@@ -56,7 +56,7 @@ const Home = ({
         <div>
           <div className="dash">
             <DndProvider backend={Backend}>
-              <div style={{display: "flex", flexDirection: "row"}}>
+              <div style={{ display: "flex", flexDirection: "row" }}>
                 <div>
                   {folders &&
                     folders[directory[directory.length - 1]].map((fold) => {
