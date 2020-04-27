@@ -56,43 +56,47 @@ const Home = ({
         <div>
           <div className="dash">
             <DndProvider backend={Backend}>
-              <div>
-                {folders &&
-                  folders[directory[directory.length - 1]].map((fold) => {
-                    if (fold) {
-                      return (
-                        <Folder
-                          key={Math.random()}
-                          directory={directory}
-                          setDirectory={setDirectory}
-                          fold={fold}
-                          folders={folders}
-                          setFolders={setFolders}
-                          posturl={posturl}
-                          transcripts={transcripts}
-                          setTranscripts={setTranscripts}
-                        />
-                      );
-                    }
+              <div style={{display: "flex", flexDirection: "row"}}>
+                <div>
+                  {folders &&
+                    folders[directory[directory.length - 1]].map((fold) => {
+                      if (fold) {
+                        return (
+                          <Folder
+                            key={Math.random()}
+                            directory={directory}
+                            setDirectory={setDirectory}
+                            fold={fold}
+                            folders={folders}
+                            setFolders={setFolders}
+                            posturl={posturl}
+                            transcripts={transcripts}
+                            setTranscripts={setTranscripts}
+                          />
+                        );
+                      }
+                    })}
+                </div>
+                <div>
+                  {transcripts.map((transcript) => {
+                    return (
+                      <Transcript
+                        setFileSelect={setFileSelect}
+                        key={Math.random()}
+                        directory={directory}
+                        setDirectory={setDirectory}
+                        folders={folders}
+                        setFolders={setFolders}
+                        posturl={posturl}
+                        transcripts={transcripts}
+                        setTranscripts={setTranscripts}
+                        setTranscriptionData={setTranscriptionData}
+                        transcript={transcript}
+                      />
+                    );
                   })}
+                </div>
               </div>
-              {transcripts.map((transcript) => {
-                return (
-                  <Transcript
-                    setFileSelect={setFileSelect}
-                    key={Math.random()}
-                    directory={directory}
-                    setDirectory={setDirectory}
-                    folders={folders}
-                    setFolders={setFolders}
-                    posturl={posturl}
-                    transcripts={transcripts}
-                    setTranscripts={setTranscripts}
-                    setTranscriptionData={setTranscriptionData}
-                    transcript={transcript}
-                  />
-                );
-              })}
             </DndProvider>
           </div>
         </div>
