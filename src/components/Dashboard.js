@@ -14,12 +14,25 @@ import Reports from "./Reports";
 import axios from "axios";
 import "../App.css";
 
-function Dashboard({ accessTokenSaved, setTranscripts, location, setLocation, transcripts, setAuthCode, posturl, redirectURL, folders, setFolders }) {
-
+function Dashboard({
+  accessTokenSaved,
+  setTranscripts,
+  location,
+  setLocation,
+  transcripts,
+  setAuthCode,
+  posturl,
+  redirectURL,
+  folders,
+  setFolders,
+  meetingRequests,
+  setMeetingRequests,
+}) {
   const LogOutClicked = () => {
     localStorage.removeItem("code");
     setAuthCode("");
     window.location.href = redirectURL;
+    window.sessionStorage.clear();
   };
 
   const requestReports = () => {
@@ -27,20 +40,51 @@ function Dashboard({ accessTokenSaved, setTranscripts, location, setLocation, tr
   };
 
   const renderLocation = () => {
-  if (location === "Transcript") {
-      return <Transcripts requestReports={requestReports} LogOutClicked={LogOutClicked} setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl}  />;
+    if (location === "Transcript") {
+      return (
+        <Transcripts
+          requestReports={requestReports}
+          LogOutClicked={LogOutClicked}
+          setLocation={setLocation}
+          setTranscripts={setTranscripts}
+          setFolders={setFolders}
+          folders={folders}
+          redirectURL={redirectURL}
+          setAuthCode={setAuthCode}
+          accessTokenSaved={accessTokenSaved}
+          transcripts={transcripts}
+          posturl={posturl}
+        />
+      );
     } else if (location === "Reports") {
-      return <Reports requestReports={requestReports} LogOutClicked={LogOutClicked} transcripts ={transcripts} setLocation={setLocation} />;
+      return (
+        <Reports
+          requestReports={requestReports}
+          LogOutClicked={LogOutClicked}
+          transcripts={transcripts}
+          setLocation={setLocation}
+        />
+      );
     } else if (location === "") {
-      return <Transcripts requestReports={requestReports} LogOutClicked={LogOutClicked} setLocation={setLocation} setTranscripts={setTranscripts} setFolders={setFolders} folders={folders} redirectURL={redirectURL} setAuthCode={setAuthCode} accessTokenSaved={accessTokenSaved} transcripts ={transcripts} posturl={posturl}  />;
+      return (
+        <Transcripts
+          requestReports={requestReports}
+          LogOutClicked={LogOutClicked}
+          setLocation={setLocation}
+          setTranscripts={setTranscripts}
+          setFolders={setFolders}
+          folders={folders}
+          redirectURL={redirectURL}
+          setAuthCode={setAuthCode}
+          accessTokenSaved={accessTokenSaved}
+          transcripts={transcripts}
+          posturl={posturl}
+        />
+      );
     }
   };
 
-  return (
-    <div>
-      {renderLocation()}
-    </div>
-  );
+  return <div>{renderLocation()}</div>;
 }
 
 export default Dashboard;
