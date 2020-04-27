@@ -67,12 +67,13 @@ const Folder = ({
             transcript.ancestors[transcript.ancestors.length - 1];
           if (currentDir == fold) {
             let newTranscriptAncestors = transcript.ancestors;
-            if (newTranscriptAncestors > 1) {
+            if (newTranscriptAncestors.length > 1) {
               newTranscriptAncestors.pop();
             }
+            console.log("chciekn", newTranscriptAncestors);
             axios.post(posturl + "/api/db/transcripts", {
               transcriptionFilePath: transcript.transcriptionFilePath,
-              newAncestor: newTranscriptAncestors,
+              newAncestors: newTranscriptAncestors,
             });
           }
         });
