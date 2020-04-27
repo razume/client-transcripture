@@ -145,8 +145,8 @@ function Transcripts({
             </Box>
           </Box>
         ) : (
-            ""
-          )}
+          ""
+        )}
       </Box>
     </ThemeProvider>
   );
