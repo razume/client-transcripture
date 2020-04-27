@@ -43,6 +43,7 @@ const Folder = ({
   setTranscripts,
 }) => {
   const classes = useStyles();
+  const [naming, setNaming] = useState(false);
   const currentDirectory = directory[directory.length - 1];
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.TRANSCRIPT,
@@ -95,13 +96,60 @@ const Folder = ({
     });
   };
 
+  const handleInput = (e) => {
+    let value = e.target.value;
+    if (e.key == "Enter") {
+      setNaming(!naming);
+      let newNames = folders;
+      for (let key in newNames) {
+        let index = newNames[key].indexOf(fold);
+        if (newNames[key].includes(fold)) {
+          transcripts.forEach((trans) => {
+            let index = trans.ancestors[trans.ancestors.indexOf(fold)];
+            if (trans.ancestors.includes(fold)) {
+              let newTranscriptAncestors = trans.ancestors;
+              newTranscriptAncestors[
+                newTranscriptAncestors.indexOf(fold)
+              ] = value;
+              axios.post(posturl + "/api/db/transcripts", {
+                transcriptionFilePath: trans.transcriptionFilePath,
+                newAncestors: newTranscriptAncestors,
+              });
+            }
+          });
+          newNames[key][index] = value;
+        }
+      }
+      newNames[value] = newNames[fold];
+
+      Reflect.deleteProperty(newNames, fold);
+      setFolders({ ...newNames });
+      axios
+        .post(posturl + "/api/db/folders", { folders })
+        .then((response) => {});
+    }
+  };
+
+  const handleRename = (e) => {
+    e.preventDefault();
+    if (e.button == 2) {
+      setNaming(!naming);
+    }
+  };
+
   return (
     <div ref={drop} onDoubleClick={handleClick} className="folder">
       <Button className="XButton" onClick={handleDelete}>
         X
       </Button>
       <img style={{ width: "300px", height: "200px" }} src={FolderImg}></img>
-      <h2 style={{ color: "black" }}>{fold} </h2>
+      {naming ? (
+        <input onKeyDown={handleInput} autoFocus type="text"></input>
+      ) : (
+        <h2 onMouseUp={handleRename} style={{ color: "black" }}>
+          {fold}{" "}
+        </h2>
+      )}
     </div>
   );
 };
