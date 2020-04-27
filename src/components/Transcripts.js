@@ -27,11 +27,16 @@ function Transcripts({
 }) {
   let [directory, setDirectory] = useState(["Home"]);
   let [isRequesting, setIsRequesting] = useState(false);
+  let [user, setUser] = useState({});
 
   const getFolders = () => {
     axios
       .get(posturl + "/api/db/folders")
       .then((fold) => setFolders(fold.data.folders));
+  };
+
+  const requestUser = () => {
+    axios.get(posturl + "/api/me").then((response) => setUser(response.data));
   };
 
   const requestMeetings = () => {
@@ -51,9 +56,14 @@ function Transcripts({
   };
 
   useEffect(() => {
+    requestUser();
+  }, []);
+
+  useEffect(() => {
     if (accessTokenSaved) {
       requestMeetings();
       getFolders();
+      requestUser();
     }
   }, [accessTokenSaved]);
 
@@ -65,8 +75,8 @@ function Transcripts({
     }
   };
 
-  console.log("FOLDERS", folders);
-  console.log("TRANSCRIPTS", transcripts);
+  // console.log("FOLDERS", folders);
+  // console.log("TRANSCRIPTS", transcripts);
 
   return (
     <ThemeProvider theme={theme}>
@@ -85,7 +95,7 @@ function Transcripts({
       </NavBar>
       <Box style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ padding: "1rem" }}>
-          <h2>Welcome User!</h2>
+          <h2>Welcome {user.first_name ? `, ${user.first_name}!` : ""}</h2>
           <Create
             directory={directory}
             folders={folders}
@@ -145,8 +155,8 @@ function Transcripts({
             </Box>
           </Box>
         ) : (
-            ""
-          )}
+          ""
+        )}
       </Box>
     </ThemeProvider>
   );
