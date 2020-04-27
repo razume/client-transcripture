@@ -11,7 +11,7 @@ import axios from "axios";
 import Transcript from "./Transcript";
 
 //Media
-import FolderImg from "../../media/folder_img.svg"
+import FolderImg from "../../media/folder_img.svg";
 const useStyles = makeStyles({
   root: {
     width: "10vw",
@@ -66,12 +66,13 @@ const Folder = ({
             transcript.ancestors[transcript.ancestors.length - 1];
           if (currentDir == fold) {
             let newTranscriptAncestors = transcript.ancestors;
-            if (newTranscriptAncestors > 1) {
+            if (newTranscriptAncestors.length > 1) {
               newTranscriptAncestors.pop();
             }
+            console.log("chciekn", newTranscriptAncestors);
             axios.post(posturl + "/api/db/transcripts", {
               transcriptionFilePath: transcript.transcriptionFilePath,
-              newAncestor: newTranscriptAncestors,
+              newAncestors: newTranscriptAncestors,
             });
           }
         });
