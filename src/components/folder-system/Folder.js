@@ -8,10 +8,11 @@ import Typography from "@material-ui/core/Typography";
 import { useDrop } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import axios from "axios";
+import { Box } from "../../styled-components/StyledComponents";
 import Transcript from "./Transcript";
 
 //Media
-import FolderImg from "../../media/folder_img.svg"
+import FolderImg from "../../media/folder_img.svg";
 const useStyles = makeStyles({
   root: {
     width: "10vw",
@@ -93,11 +94,11 @@ const Folder = ({
   };
 
   return (
-    <div ref={drop} onDoubleClick={handleClick} className="folder">
+    <Box ref={drop} onDoubleClick={handleClick} className="folder">
       <img src={FolderImg}></img>
       <h2>{fold} </h2>
       <button onClick={handleDelete}>X</button>
-    </div>
+    </Box>
   );
 };
 
