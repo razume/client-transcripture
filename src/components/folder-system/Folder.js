@@ -13,6 +13,7 @@ import Transcript from "./Transcript";
 
 //Media
 import FolderImg from "../../media/folder_img.svg";
+
 const useStyles = makeStyles({
   root: {
     width: "10vw",
@@ -95,11 +96,13 @@ const Folder = ({
   };
 
   return (
-    <Box ref={drop} onDoubleClick={handleClick} className="folder">
-      <img src={FolderImg}></img>
-      <h2>{fold} </h2>
-      <button onClick={handleDelete}>X</button>
-    </Box>
+    <div ref={drop} onDoubleClick={handleClick} className="folder">
+      <Button className="XButton" onClick={handleDelete}>
+        X
+      </Button>
+      <img style={{ width: "300px", height: "200px" }} src={FolderImg}></img>
+      <h2 style={{ color: "black" }}>{fold} </h2>
+    </div>
   );
 };
 
