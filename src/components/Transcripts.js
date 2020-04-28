@@ -58,10 +58,6 @@ function Transcripts({
     }
   };
 
-  // useEffect(() => {
-  //   requestUser();
-  // }, []);
-
   useEffect(() => {
     if (accessTokenSaved) {
       requestMeetings();
@@ -98,7 +94,7 @@ function Transcripts({
       </NavBar>
       <Box style={{ display: "flex", flexDirection: "row" }}>
         <div style={{ padding: "1rem" }}>
-          <h2>Welcome{user.first_name ? `, ${user.first_name}!` : ""}</h2>
+          <h2>Welcome {user.first_name ? `, ${user.first_name}!` : ""}</h2>
           <Create
             directory={directory}
             folders={folders}

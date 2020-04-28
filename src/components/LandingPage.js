@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import theme from "../styled-components/theme";
 import {
-  Box,
+  Box as Div,
   Card,
   Heading,
   NavBar,
   Text,
 } from "../styled-components/StyledComponents";
 import PostCard from "./PostCard";
-import { Button, Link } from "@material-ui/core";
+import { Box, Button, Link } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
 
@@ -48,8 +48,8 @@ const LandingPage = ({
   }, [posturl]);
 
   return (
-    <Box>
-      <Box display="flex" flexDirection="column" height="50rem">
+    <Div>
+      <Div display="flex" flexDirection="column" height="60rem">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1340 320"
@@ -73,19 +73,18 @@ const LandingPage = ({
           ></path>
         </svg>
         <NavBar>
-          <Box display="flex" flexDirection="row" alignItems="center">
+          <Div display="flex" flexDirection="row" alignItems="center">
             <img
               className="top-left-logo"
               src={require("../media/scribe_logo_text.svg")}
             />
-          </Box>
-          <Box>
+          </Div>
+          <Div>
             <Button>About</Button>
             <Button href={url}>Log in</Button>
-          </Box>
+          </Div>
         </NavBar>
-
-        <Box display="flex" justifyContent="center">
+        <Div display="flex" justifyContent="center">
           <Heading
             textAlign="center"
             fontWeight="500"
@@ -97,40 +96,27 @@ const LandingPage = ({
             Get the most out of Zoom. View your team's recorded meetings,
             transcripts of the meetings, and reports.
           </Heading>
-        </Box>
-
+        </Div>
         <Box
           display="flex"
-          justifyContent="space-around"
           flexWrap="wrap"
-          mt={5}
+          flexDirection="row"
+          justifyContent="space-around"
+          mt="5rem"
         >
           <PostCard
             imageUrl={require("../media/cardart_transcript.svg")}
-            cardTitle={"Transcripts"}
-            cardBody={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-          />
+            cardTitle="Transcripts"
+          />{" "}
           <PostCard
-            imageUrl={require("../media/camcorder.jpg")}
-            cardTitle={"Recorded Meetings"}
-            cardBody={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-          />
-
-          <PostCard
-            imageUrl={require("../media/calculator.jpg")}
-            cardTitle={"Reports"}
-            cardBody={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-            }
-          />
+            imageUrl={require("../media/cardart_player.svg")}
+            cardTitle="Recorded Meetings"
+          />{" "}
+          <PostCard />
         </Box>
-      </Box>
+      </Div>
 
-      <Box
+      <Div
         height="55rem"
         width="100%"
         backgroundColor="#36404f"
@@ -158,7 +144,7 @@ const LandingPage = ({
             d="M0,32L20,48C40,64,80,96,120,96C160,96,200,64,240,48C280,32,320,32,360,74.7C400,117,440,203,480,208C520,213,560,139,600,122.7C640,107,680,149,720,170.7C760,192,800,192,840,202.7C880,213,920,235,960,229.3C1000,224,1040,192,1080,165.3C1120,139,1160,117,1200,112C1240,107,1280,117,1320,117.3C1360,117,1400,107,1420,101.3L1440,96L1440,320L1420,320C1400,320,1360,320,1320,320C1280,320,1240,320,1200,320C1160,320,1120,320,1080,320C1040,320,1000,320,960,320C920,320,880,320,840,320C800,320,760,320,720,320C680,320,640,320,600,320C560,320,520,320,480,320C440,320,400,320,360,320C320,320,280,320,240,320C200,320,160,320,120,320C80,320,40,320,20,320L0,320Z"
           ></path>
         </svg>
-        <Box mt="5rem">
+        <Div mt="5rem">
           <Text
             mb="5rem"
             textAlign="center"
@@ -168,23 +154,23 @@ const LandingPage = ({
           >
             Why Scribe?
           </Text>
-        </Box>
+        </Div>
 
-        <Box
+        <Div
           display="flex"
           flexDirection="row"
           height="27rem"
           color="white"
           px="3rem"
         >
-          <Box
+          <Div
             display="flex"
             flexDirection="column"
             flex="1"
             alignItems="center"
             justifyContent="space-around"
           >
-            <Box flex="1" width="27rem">
+            <Div flex="1" width="27rem">
               <img
                 src={require("../media/dollar_icon.svg")}
                 style={{ height: "40px" }}
@@ -193,8 +179,8 @@ const LandingPage = ({
               <Text>
                 Don't worry. We won't ask you for credit card information.
               </Text>
-            </Box>
-            <Box flex="1" width="27rem">
+            </Div>
+            <Div flex="1" width="27rem">
               <img
                 src={require("../media/check_icon.svg")}
                 style={{ height: "40px" }}
@@ -205,15 +191,15 @@ const LandingPage = ({
                 able to use Scribe. Sign in and you're a few clicks away from
                 improving productivity.
               </Text>
-            </Box>
-          </Box>
-          <Box
+            </Div>
+          </Div>
+          <Div
             display="flex"
             flexDirection="column"
             flex="1"
             alignItems="center"
           >
-            <Box flex="1" width="27rem">
+            <Div flex="1" width="27rem">
               <img
                 src={require("../media/folder_icon.svg")}
                 style={{ height: "40px" }}
@@ -223,8 +209,8 @@ const LandingPage = ({
                 We use an intuitive folder structure interface similar to what
                 you use on a desktop computer.
               </Text>
-            </Box>
-            <Box flex="1" width="27rem">
+            </Div>
+            <Div flex="1" width="27rem">
               <img
                 src={require("../media/rocket_icon.svg")}
                 style={{ height: "36px" }}
@@ -234,23 +220,23 @@ const LandingPage = ({
                 Powered by Google, Scribe transcriptions can pick out multiple
                 speakers and provide industry leading accuracy.
               </Text>
-            </Box>
-          </Box>
-          <Box
+            </Div>
+          </Div>
+          <Div
             display="flex"
             flexDirection="column"
             flex="1"
             alignItems="center"
           >
-            <Box flex="1" width="27rem">
+            <Div flex="1" width="27rem">
               <img
                 src={require("../media/lightning_icon.svg")}
                 style={{ height: "40px" }}
               />
               <h3>Fast</h3>
               <Text>Transcribe entire meetings in a few minutes or less.</Text>
-            </Box>
-            <Box flex="1" width="27rem">
+            </Div>
+            <Div flex="1" width="27rem">
               <img
                 src={require("../media/lock_icon.svg")}
                 style={{ height: "36px" }}
@@ -260,13 +246,13 @@ const LandingPage = ({
                 You can rest easy knowing your information is secured with
                 Oauth2.
               </Text>
-            </Box>
-          </Box>
-          <Box display="flex" flexDirection="column"></Box>
-          <Box display="flex" flexDirection="column"></Box>
-        </Box>
-      </Box>
-    </Box>
+            </Div>
+          </Div>
+          <Div display="flex" flexDirection="column"></Div>
+          <Div display="flex" flexDirection="column"></Div>
+        </Div>
+      </Div>
+    </Div>
   );
 };
 
