@@ -58,9 +58,9 @@ function Transcripts({
     }
   };
 
-  useEffect(() => {
-    requestUser();
-  }, []);
+  // useEffect(() => {
+  //   requestUser();
+  // }, []);
 
   useEffect(() => {
     if (accessTokenSaved) {

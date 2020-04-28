@@ -25,7 +25,7 @@ const LandingPage = ({
     clientID +
     "&redirect_uri=" +
     redirectURL;
-  
+
   useEffect(() => {
     if (window.location.href.indexOf("code") > -1) {
       let currenturl = window.location.href;
@@ -106,7 +106,7 @@ const LandingPage = ({
           mt={5}
         >
           <PostCard
-            imageUrl={require("../media/typewriter.jpg")}
+            imageUrl={require("../media/cardart_transcript.svg")}
             cardTitle={"Transcripts"}
             cardBody={
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
