@@ -17,7 +17,12 @@ const useStyles = makeStyles({
     marginleft: "0.5rem",
   },
   media: {
-    height: 140,
+    height: 210,
+  },
+  heading: {
+    fontWeight: 500,
+    marginTop: ".4rem",
+    textAlign: "center",
   },
 });
 
@@ -27,15 +32,20 @@ export default function PostCard({ imageUrl, cardTitle, cardBody }) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="h2"
+          className={classes.heading}
+        >
+          {cardTitle}
+        </Typography>
         <CardMedia
           className={classes.media}
           image={imageUrl}
           title="landing page card"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {cardTitle}
-          </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {cardBody}
           </Typography>
