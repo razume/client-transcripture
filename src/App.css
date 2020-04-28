@@ -60,15 +60,13 @@ body {
 
 .XButton {
   position: absolute;
-  left: -65px;
-  top: 70px;
+  left: -75px;
+  top: 74px;
   padding: 4px;
   font-size: 17px;
   line-height: 18px;
 }
-.XButton:hover {
-  background-color: tomato !important;
-}
+
 .doc {
   text-align: center;
   color: black;

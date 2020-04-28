@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { useDrag } from "react-dnd";
 import ItemTypes from "./ItemTypes";
 import axios from "axios";
 
 //Media
-import FileImg from "../../media/file_img.svg"
+import FileImg from "../../media/file_img.svg";
 
 const useStyles = makeStyles({
   root: {
@@ -98,7 +92,7 @@ const Transcript = ({
           newName: value,
           transcriptionFilePath: transcript.transcriptionFilePath,
         })
-        .then((res) => {
+        .then(() => {
           let newState = transcripts;
           let index = newState.findIndex((result) => result === transcript);
           newState[index].name = value;
@@ -109,13 +103,20 @@ const Transcript = ({
   };
 
   return (
-    <div ref={drag} style={{ display: visible, opacity, width: "5vw", padding: '1rem' }}  onDoubleClick={() => { setTranscriptionData(transcript); setFileSelect(true) }}>
-      <img src={FileImg}/>
+    <div
+      ref={drag}
+      style={{ display: visible, opacity, width: "5vw", padding: "1rem" }}
+      onDoubleClick={() => {
+        setTranscriptionData(transcript);
+        setFileSelect(true);
+      }}
+    >
+      <img src={FileImg} />
       <div
-       onMouseUp={handleRename}
+        onMouseUp={handleRename}
         onContextMenu={(e) => e.preventDefault()}
         className="doc-title"
-        >
+      >
         {naming ? (
           <input
             onKeyDown={handleInput}
@@ -126,8 +127,8 @@ const Transcript = ({
         ) : (
           <h3>{transcript.name}</h3>
         )}
-        </div>
       </div>
+    </div>
   );
 };
 
