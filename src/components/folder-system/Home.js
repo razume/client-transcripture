@@ -88,6 +88,20 @@ const Home = ({
                       }
                     })}
                 </div>
+                {currentDirectory !== "Home" && (
+                  <div>
+                    <Back
+                      key={Math.random()}
+                      directory={directory}
+                      setDirectory={setDirectory}
+                      folders={folders}
+                      setFolders={setFolders}
+                      posturl={posturl}
+                      transcripts={transcripts}
+                      setTranscripts={setTranscripts}
+                    />
+                  </div>
+                )}
                 <div>
                   {transcripts.map((transcript) => {
                     return (
@@ -107,20 +121,6 @@ const Home = ({
                     );
                   })}
                 </div>
-                {currentDirectory !== "Home" && (
-                  <div>
-                    <Back
-                      key={Math.random()}
-                      directory={directory}
-                      setDirectory={setDirectory}
-                      folders={folders}
-                      setFolders={setFolders}
-                      posturl={posturl}
-                      transcripts={transcripts}
-                      setTranscripts={setTranscripts}
-                    />
-                  </div>
-                )}
               </div>
             </DndProvider>
           </div>
