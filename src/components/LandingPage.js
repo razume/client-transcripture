@@ -86,14 +86,17 @@ const LandingPage = ({
           <PostCard
             imageUrl={require("../media/cardart_transcript.svg")}
             cardTitle="Transcripts"
+            learnMoreContent="Powered by Google, our transcripts are some of the most accurate and useful with features like Speaker Diarization (different speakers are labeled in the transcript) and the ability to export the transcript files."
           />{" "}
           <PostCard
             imageUrl={require("../media/cardart_player.svg")}
             cardTitle="Recorded Meetings"
+            learnMoreContent="If you record meetings to the cloud on Zoom, they are available to watch and download in Scribe."
           />{" "}
           <PostCard
             imageUrl={require("../media/cardart_reports.svg")}
             cardTitle="Reports"
+            learnMoreContent="Get useful reports on the lengths, subjects, and content of meetings."
           />
         </Box>
       </Box>
