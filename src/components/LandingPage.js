@@ -46,7 +46,7 @@ const LandingPage = ({
 
   return (
     <Box style={{ backgroundColor: "rgb(250, 250, 250)" }}>
-      <Box position="relative" height="60rem">
+      <Box position="relative" height="100%">
         <NavBar>
           <Box display="flex" flexDirection="row" alignItems="center">
             <img
@@ -231,8 +231,6 @@ const LandingPage = ({
               </Text>
             </Box>
           </Box>
-          <Box display="flex" flexDirection="column"></Box>
-          <Box display="flex" flexDirection="column"></Box>
         </Box>
       </Box>
     </Box>
