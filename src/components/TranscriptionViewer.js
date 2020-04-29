@@ -16,6 +16,14 @@ import { marginRight } from "styled-system";
 const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
   console.log(TranscriptionData);
 
+  const ExportTranscript = (transcriptPath) => {
+    //We have to remove the dot in the file path:
+    const revisedPath = transcriptPath.substring(1);
+    // axios
+    //   .get(posturl + "/api/export/transcript", { path: revisedPath })
+      window.open(`${posturl}/api/export/transcript?filepath=${revisedPath}`);
+
+  };
   return (
     <ThemeProvider theme={theme}>
       <Box>
@@ -24,6 +32,7 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
+          width="70%"
         >
           <Button>
             <img
@@ -33,12 +42,19 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
               style={{ height: "40px" }}
             ></img>
           </Button>
-          <h3 className="Filename">
-            File name: <strong>{TranscriptionData.name}</strong>
-          </h3>
-          <Box width="40px" height="40px" border="1px solid orange">
-            hi
-          </Box>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <h3 className="Filename">
+              File name: <strong>{TranscriptionData.name}</strong>
+            </h3>
+            <Button
+              style={{ padding: "1rem" }}
+              onClick={() =>
+                ExportTranscript(TranscriptionData.transcriptionFilePath)
+              }
+            >
+              Export
+            </Button>
+          </div>
         </Box>
         <Box className="TranscriptViewerBox">
           <div>
