@@ -50,6 +50,8 @@ const Home = ({
         display: "flex",
         flexDirection: "row",
         border: "2px solid #c9c9c9",
+        width: "calc(100vw - 12rem)",
+        overflow: "hidden",
         borderRadius: "5px",
       }}
     >

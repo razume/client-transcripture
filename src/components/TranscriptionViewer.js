@@ -11,23 +11,35 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import BackImg from "../media/back_img.svg";
+import { marginRight } from "styled-system";
 
 const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
   console.log(TranscriptionData);
 
   return (
     <ThemeProvider theme={theme}>
-      <div style={{ textAlign: "center" }}>
-        <h3 className="Filename">Name: {TranscriptionData.name}</h3>
-        <div>
-        <Button style={{ textAlign: "left", justifyContent: "left" }}>
-          <img
-            className="BackButton"
-            src={BackImg}
-            onClick={() => setFileSelect(false)}
-          ></img>
-        </Button>
-        </div>
+      <Box>
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Button>
+            <img
+              className="BackButton"
+              src={BackImg}
+              onClick={() => setFileSelect(false)}
+              style={{ height: "40px" }}
+            ></img>
+          </Button>
+          <h3 className="Filename">
+            File name: <strong>{TranscriptionData.name}</strong>
+          </h3>
+          <Box width="40px" height="40px" border="1px solid orange">
+            hi
+          </Box>
+        </Box>
         <Box className="TranscriptViewerBox">
           <div>
             <video
@@ -41,7 +53,7 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
             <span>{TranscriptionData.content}</span>
           </div>
         </Box>
-      </div>
+      </Box>
     </ThemeProvider>
   );
 };

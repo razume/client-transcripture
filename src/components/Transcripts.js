@@ -93,7 +93,12 @@ function Transcripts({
         </Box>
       </NavBar>
       <Box style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ padding: "1rem" }}>
+        <div
+          style={{
+            padding: "1rem",
+            width: "10rem",
+          }}
+        >
           <h2>Welcome {user.first_name ? `, ${user.first_name}!` : ""}</h2>
           <Create
             directory={directory}
