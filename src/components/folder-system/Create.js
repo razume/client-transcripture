@@ -34,16 +34,20 @@ const Create = ({ directory, folders, setFolders, posturl }) => {
   const currentDirectory = directory[directory.length - 1];
   const handleClick = (e) => {
     if (input) {
-      let result = folders;
-      console.log("results", result);
-      console.log("folders", folders);
-      result[currentDirectory][result[currentDirectory].length] = input;
-      result[`${input}`] = [];
-      setFolders({ ...result });
-      axios.post(posturl + "/api/db/folders", { folders }).then((res) => {
-        console.log("updated folders object", res);
-        setInput("");
-      });
+      if (!(input in folders)) {
+        let result = folders;
+        console.log("results", result);
+        console.log("folders", folders);
+        result[currentDirectory][result[currentDirectory].length] = input;
+        result[`${input}`] = [];
+        setFolders({ ...result });
+        axios.post(posturl + "/api/db/folders", { folders }).then((res) => {
+          console.log("updated folders object", res);
+          setInput("");
+        });
+      } else {
+        alert("That name is already in use");
+      }
     } else {
       alert("Please provide a name");
     }
@@ -55,7 +59,11 @@ const Create = ({ directory, folders, setFolders, posturl }) => {
 
   return (
     <div className={classes.root}>
-      <TextField label="Enter Folder Name" onChange={handleTextInput} />
+      <TextField
+        value={input}
+        label="Enter Folder Name"
+        onChange={handleTextInput}
+      />
       <Button onClick={handleClick}>create folder</Button>
     </div>
   );

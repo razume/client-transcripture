@@ -63,7 +63,7 @@ const Folder = ({
         console.log("fold", fold);
         let newAncestors = trans.ancestors;
         if (newAncestors[newAncestors.length - 1] !== "Home") {
-          newAncestors.splice(newAncestors.indexOf(fold));
+          newAncestors.splice(newAncestors.indexOf(fold), 1);
         }
         console.log("jah", newAncestors);
         axios
