@@ -108,6 +108,7 @@ const TranscriptsReport = ({ transcripts }) => {
           <Card
             style={{
               height: "30%",
+              minHeight: "53px",
               minWidth: "180px",
               width: "10%",
               padding: "1rem",
@@ -120,6 +121,7 @@ const TranscriptsReport = ({ transcripts }) => {
           <Card
             style={{
               height: "30%",
+              minHeight: "53px",
               minWidth: "180px",
               width: "10%",
               padding: "1rem",
@@ -132,6 +134,7 @@ const TranscriptsReport = ({ transcripts }) => {
           <Card
             style={{
               height: "30%",
+              minHeight: "53px",
               minWidth: "180px",
               width: "10%",
               padding: "1rem",
@@ -144,6 +147,7 @@ const TranscriptsReport = ({ transcripts }) => {
           <Card
             style={{
               height: "30%",
+              minHeight: "53px",
               minWidth: "180px",
               width: "10%",
               padding: "1rem",
@@ -157,6 +161,7 @@ const TranscriptsReport = ({ transcripts }) => {
         <div
           style={{
             height: "100%",
+            minHeight: "53px",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
