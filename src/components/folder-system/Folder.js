@@ -74,16 +74,16 @@ const Folder = ({
           .then((res) => console.log("joe", res));
       }
     });
+    if (newFolders[fold]) {
+      newFolders[fold].forEach((folde) => {
+        newFolders[currentDirectory].push(folde);
+      });
+    }
     for (let key in newFolders) {
       if (newFolders[key].includes(fold)) {
         let index = newFolders[key].indexOf(fold);
         newFolders[key].splice(index, 1);
       }
-    }
-    if (newFolders[fold]) {
-      newFolders[fold].forEach((folde) => {
-        newFolders[currentDirectory].push(folde);
-      });
     }
 
     Reflect.deleteProperty(newFolders, fold);
