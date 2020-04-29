@@ -40,11 +40,13 @@ const Create = ({ directory, folders, setFolders, posturl }) => {
         console.log("folders", folders);
         result[currentDirectory][result[currentDirectory].length] = input;
         result[`${input}`] = [];
-        setFolders({ ...result });
-        axios.post(posturl + "/api/db/folders", { folders }).then((res) => {
-          console.log("updated folders object", res);
-          setInput("");
-        });
+        axios
+          .post(posturl + "/api/db/folders", { folders: result })
+          .then((res) => {
+            console.log("updated folders object", res);
+            setInput("");
+            setFolders({ ...result });
+          });
       } else {
         alert("That name is already in use");
       }
