@@ -41,7 +41,6 @@ const Folder = ({
   setTranscripts,
 }) => {
   const classes = useStyles();
-  const [naming, setNaming] = useState(false);
   const currentDirectory = directory[directory.length - 1];
   const [{ canDrop, isOver }, drop] = useDrop({
     accept: ItemTypes.TRANSCRIPT,
@@ -58,26 +57,26 @@ const Folder = ({
 
   const handleDelete = (e) => {
     let newFolders = folders;
-
+    transcripts.forEach((trans) => {
+      if (trans.ancestors.includes(fold)) {
+        console.log("juh", trans.ancestors);
+        console.log("fold", fold);
+        let newAncestors = trans.ancestors;
+        if (newAncestors[newAncestors.length - 1] !== "Home") {
+          newAncestors.splice(newAncestors.indexOf(fold));
+        }
+        console.log("jah", newAncestors);
+        axios
+          .post(posturl + "/api/db/transcripts/", {
+            transcriptionFilePath: trans.transcriptionFilePath,
+            newAncestors: newAncestors,
+          })
+          .then((res) => console.log("joe", res));
+      }
+    });
     for (let key in newFolders) {
-      let index = newFolders[key].indexOf(fold);
       if (newFolders[key].includes(fold)) {
-        transcripts.forEach((transcript) => {
-          let currentDir =
-            transcript.ancestors[transcript.ancestors.length - 1];
-          if (currentDir == fold) {
-            let newTranscriptAncestors = transcript.ancestors;
-            if (newTranscriptAncestors.length > 1) {
-              newTranscriptAncestors.pop();
-            }
-            console.log("chciekn", newTranscriptAncestors);
-            axios.post(posturl + "/api/db/transcripts", {
-              transcriptionFilePath: transcript.transcriptionFilePath,
-              newAncestors: newTranscriptAncestors,
-            });
-          }
-        });
-
+        let index = newFolders[key].indexOf(fold);
         newFolders[key].splice(index, 1);
       }
     }
@@ -86,53 +85,14 @@ const Folder = ({
         newFolders[currentDirectory].push(folde);
       });
     }
+
     Reflect.deleteProperty(newFolders, fold);
-    setFolders({ ...newFolders });
-    console.log("processed", newFolders);
-    axios.post(posturl + "/api/db/folders", { folders }).then((response) => {
-      console.log(response);
-    });
-  };
-
-  const handleInput = (e) => {
-    let value = e.target.value;
-    if (e.key == "Enter") {
-      setNaming(!naming);
-      let newNames = folders;
-      for (let key in newNames) {
-        let index = newNames[key].indexOf(fold);
-        if (newNames[key].includes(fold)) {
-          transcripts.forEach((trans) => {
-            let index = trans.ancestors[trans.ancestors.indexOf(fold)];
-            if (trans.ancestors.includes(fold)) {
-              let newTranscriptAncestors = trans.ancestors;
-              newTranscriptAncestors[
-                newTranscriptAncestors.indexOf(fold)
-              ] = value;
-              axios.post(posturl + "/api/db/transcripts", {
-                transcriptionFilePath: trans.transcriptionFilePath,
-                newAncestors: newTranscriptAncestors,
-              });
-            }
-          });
-          newNames[key][index] = value;
-        }
-      }
-      newNames[value] = newNames[fold];
-
-      Reflect.deleteProperty(newNames, fold);
-      setFolders({ ...newNames });
-      axios
-        .post(posturl + "/api/db/folders", { folders })
-        .then((response) => {});
-    }
-  };
-
-  const handleRename = (e) => {
-    e.preventDefault();
-    if (e.button == 2) {
-      setNaming(!naming);
-    }
+    axios
+      .post(posturl + "/api/db/folders", { folders: newFolders })
+      .then((response) => {
+        console.log(response);
+        setFolders({ ...newFolders });
+      });
   };
 
   return (
@@ -146,13 +106,7 @@ const Folder = ({
       </IconButton>
 
       <img style={{ width: "300px", height: "200px" }} src={FolderImg}></img>
-      {naming ? (
-        <input onKeyDown={handleInput} autoFocus type="text"></input>
-      ) : (
-        <h2 onMouseUp={handleRename} style={{ color: "black" }}>
-          {fold}{" "}
-        </h2>
-      )}
+      <h2 style={{ color: "black" }}>{fold} </h2>
     </div>
   );
 };
