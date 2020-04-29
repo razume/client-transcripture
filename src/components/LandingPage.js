@@ -7,6 +7,7 @@ import {
   Text,
 } from "../styled-components/StyledComponents";
 import PostCard from "./PostCard";
+import HorizontalStepper from "./Stepper";
 import { Button } from "@material-ui/core";
 import "../App.css";
 import axios from "axios";
@@ -95,6 +96,9 @@ const LandingPage = ({
             cardTitle="Reports"
           />
         </Box>
+      </Box>
+      <Box my="8rem">
+        <HorizontalStepper />
       </Box>
 
       <Box
