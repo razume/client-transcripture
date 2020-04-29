@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "../styled-components/theme";
-import { Box, NavBar } from "../styled-components/StyledComponents";
+import { Box, NavBar, Text } from "../styled-components/StyledComponents";
 import {
   Typography,
   Breadcrumbs,
@@ -9,10 +9,11 @@ import {
   Link,
   CircularProgress,
 } from "@material-ui/core";
-import TranscriptsReport from "./reporting/TranscriptsReport"
-import BackImg from "../media/back_img.svg"
+import HomeIcon from "@material-ui/icons/Home";
+import TranscriptsReport from "./reporting/TranscriptsReport";
+import BackImg from "../media/back_img.svg";
 
-function Reports({ setLocation, transcripts, requestReports, LogOutClicked}) {
+function Reports({ setLocation, transcripts, requestReports, LogOutClicked }) {
   const handleBack = () => {
     setLocation("");
   };
@@ -28,11 +29,16 @@ function Reports({ setLocation, transcripts, requestReports, LogOutClicked}) {
           />
         </Box>
         <Box>
-          <Link onClick={requestReports}>Reports</Link>
+          <Button onClick={handleBack}>
+            <Text mr="5px">Home</Text>
+            <HomeIcon />
+          </Button>
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
-      <Button><img className="BackButton" src={BackImg} onClick={handleBack}></img></Button>
+      <Button>
+        <img className="BackButton" src={BackImg} onClick={handleBack}></img>
+      </Button>
       <TranscriptsReport transcripts={transcripts} />
     </ThemeProvider>
   );
