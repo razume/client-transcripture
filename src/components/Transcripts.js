@@ -152,7 +152,7 @@ function Transcripts({
             }}
           >
             <Text ml="2rem" fontSize="14pt" fontWeight={500}>
-              fetching transctipts . . . . .
+              fetching transcripts . . . . .
             </Text>{" "}
             <Box mr="2rem">
               <CircularProgress size={30} />

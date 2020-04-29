@@ -37,11 +37,7 @@ export default function MediaCard({ imageUrl, cardTitle }) {
           {cardTitle}
         </Typography>
       </CardContent>
-      <CardMedia
-        className={classes.media}
-        image={imageUrl}
-        title="landing page card"
-      />
+      <CardMedia className={classes.media} image={imageUrl} title="" />
       <Box
         display="flex"
         justifyContent="center"
