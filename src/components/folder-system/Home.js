@@ -13,6 +13,7 @@ import { flex } from "styled-system";
 import { DndProvider } from "react-dnd";
 import Backend from "react-dnd-html5-backend";
 import TranscriptionViewer from "../TranscriptionViewer";
+import Back from "./Back";
 
 const useStyles = makeStyles({
   root: {
@@ -43,6 +44,7 @@ const Home = ({
   const classes = useStyles();
   const [fileSelect, setFileSelect] = useState(false);
   const [TranscriptionData, setTranscriptionData] = useState();
+  let currentDirectory = directory[directory.length - 1];
 
   return (
     <div
@@ -105,6 +107,20 @@ const Home = ({
                     );
                   })}
                 </div>
+                {currentDirectory !== "Home" && (
+                  <div>
+                    <Back
+                      key={Math.random()}
+                      directory={directory}
+                      setDirectory={setDirectory}
+                      folders={folders}
+                      setFolders={setFolders}
+                      posturl={posturl}
+                      transcripts={transcripts}
+                      setTranscripts={setTranscripts}
+                    />
+                  </div>
+                )}
               </div>
             </DndProvider>
           </div>

@@ -39,6 +39,9 @@ const Transcript = ({
   setTranscripts,
 }) => {
   const [naming, setNaming] = useState(false);
+
+  const currentDirectory = directory[directory.length - 1];
+  const myDirectory = transcript.ancestors[transcript.ancestors.length - 1];
   //I dont know if you need to pass the setTranscript function or not, you may be able to update the transcript.ancestors directly
   const name = transcript.transcriptionFilePath; //Provide transcript ancestor array to match current directory and target directory
   const classes = useStyles();
@@ -47,16 +50,33 @@ const Transcript = ({
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult(); //dropResult is the dropTarget object
       if (item && dropResult) {
-        let updatedAncestors = transcript.ancestors;
-        updatedAncestors.push(dropResult.name);
-        console.log(updatedAncestors);
-        axios
-          .post(posturl + "/api/db/transcripts", {
-            transcriptionFilePath: name,
-            videoFilePath: transcript.videoFilePath,
-            newAncestors: updatedAncestors,
-          })
-          .then((res) => console.log("updated ancestor", res));
+        if (dropResult.name == "back") {
+          if (currentDirectory == "Home") {
+            console.log("Far as she goes chief!");
+          } else {
+            console.log("back");
+            let updatedAncestors = transcript.ancestors;
+            updatedAncestors.pop();
+            axios
+              .post(posturl + "/api/db/transcripts", {
+                transcriptionFilePath: name,
+                videoFilePath: transcript.videoFilePath,
+                newAncestors: updatedAncestors,
+              })
+              .then((res) => console.log("updated ancestor", res));
+          }
+        } else {
+          let updatedAncestors = transcript.ancestors;
+          updatedAncestors.push(dropResult.name);
+          console.log(updatedAncestors);
+          axios
+            .post(posturl + "/api/db/transcripts", {
+              transcriptionFilePath: name,
+              videoFilePath: transcript.videoFilePath,
+              newAncestors: updatedAncestors,
+            })
+            .then((res) => console.log("updated ancestor", res));
+        }
       }
     },
     collect: (monitor) => ({
@@ -65,8 +85,6 @@ const Transcript = ({
   });
 
   const opacity = isDragging ? 0.3 : 1;
-  const currentDirectory = directory[directory.length - 1];
-  const myDirectory = transcript.ancestors[transcript.ancestors.length - 1];
 
   let visible;
 
