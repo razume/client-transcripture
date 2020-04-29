@@ -11,7 +11,10 @@ const useStyles = makeStyles({
   root: {
     minWidth: 375,
     maxWidth: 400,
-    margin: "1.5rem",
+    margin: "1rem",
+    paddingRight: "2rem",
+    paddingLeft: "2rem",
+    boxShadow: "1px 0px 8px #c9c9c9",
   },
   heading: {
     fontWeight: 500,
