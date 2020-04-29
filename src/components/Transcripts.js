@@ -58,10 +58,6 @@ function Transcripts({
     }
   };
 
-  // useEffect(() => {
-  //   requestUser();
-  // }, []);
-
   useEffect(() => {
     if (accessTokenSaved) {
       requestMeetings();

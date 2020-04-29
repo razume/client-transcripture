@@ -11,32 +11,11 @@ body {
   width: 130px;
 }
 
-.dashboard-flowchart {
-  height: 480px;
-}
-
-.landing-page-flowchart {
-  height: 800px;
-}
-
 .background-wave {
   display: inline-block;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
-}
-
-.background-wave2 {
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: 1;
-}
-
-.bg-wave {
-  position: absolute;
   z-index: -1;
 }
 
@@ -81,16 +60,11 @@ body {
 
 .XButton {
   position: absolute;
-  left: -65px;
-  top: 70px;
-  color: white;
+  left: -75px;
+  top: 74px;
   padding: 4px;
   font-size: 17px;
   line-height: 18px;
-}
-
-.XButton:hover {
-  background-color: red !important;
 }
 
 .doc {
