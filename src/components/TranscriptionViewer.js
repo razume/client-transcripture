@@ -21,8 +21,7 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
     const revisedPath = transcriptPath.substring(1);
     // axios
     //   .get(posturl + "/api/export/transcript", { path: revisedPath })
-      window.open(`${posturl}/api/export/transcript?filepath=${revisedPath}`);
-
+    window.open(`${posturl}/api/export/transcript?filepath=${revisedPath}`);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -32,7 +31,7 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
-          width="70%"
+          width="80%"
         >
           <Button>
             <img
@@ -42,20 +41,28 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
               style={{ height: "40px" }}
             ></img>
           </Button>
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h3 className="Filename">
-              File name: <strong>{TranscriptionData.name}</strong>
-            </h3>
-            <Button
-              style={{ padding: "1rem" }}
-              onClick={() =>
-                ExportTranscript(TranscriptionData.transcriptionFilePath)
-              }
-            >
-              Export
-            </Button>
-          </div>
+
+          <h3 className="Filename">
+            File name: <strong>{TranscriptionData.name}</strong>
+          </h3>
+          <Button
+            style={{ padding: "1rem" }}
+            onClick={() =>
+              ExportTranscript(TranscriptionData.transcriptionFilePath)
+            }
+          >
+            <img
+              style={{
+                height: "40px",
+                paddingBottom: "8px",
+                marginRight: "3rem",
+                marginLeft: "3rem",
+              }}
+              src={require("../media/export_icon.svg")}
+            ></img>
+          </Button>
         </Box>
+
         <Box className="TranscriptViewerBox">
           <div>
             <video

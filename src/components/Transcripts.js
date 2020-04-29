@@ -11,6 +11,7 @@ import {
   Link,
   CircularProgress,
 } from "@material-ui/core";
+import EqualizerIcon from "@material-ui/icons/Equalizer";
 import Create from "./folder-system/Create";
 function Transcripts({
   requestReports,
@@ -88,7 +89,9 @@ function Transcripts({
           />
         </Box>
         <Box>
-          <Link onClick={requestReports}>Reports</Link>
+          <Button onClick={requestReports}>
+            <Text mr="5px">Reports</Text> <EqualizerIcon />
+          </Button>
           <Button onClick={LogOutClicked}>Log Out</Button>
         </Box>
       </NavBar>
