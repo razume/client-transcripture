@@ -63,7 +63,7 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
           </Button>
         </Box>
 
-        <Box className="TranscriptViewerBox">
+        <Box className="TranscriptViewerBox" width="83vw">
           <div>
             <video
               style={{ width: "50vw", minWidth: "500px" }}
