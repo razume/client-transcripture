@@ -37,7 +37,12 @@ function Reports({ setLocation, transcripts, requestReports, LogOutClicked }) {
         </Box>
       </NavBar>
       <Button>
-        <img className="BackButton" src={BackImg} onClick={handleBack}></img>
+        <img
+          className="BackButton"
+          style={{ height: "40px" }}
+          src={BackImg}
+          onClick={handleBack}
+        ></img>
       </Button>
       <TranscriptsReport transcripts={transcripts} />
     </ThemeProvider>
