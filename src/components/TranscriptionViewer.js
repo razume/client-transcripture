@@ -11,7 +11,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import BackImg from "../media/back_img.svg";
-import { marginRight } from "styled-system";
+import { marginRight, borderRadius } from "styled-system";
 
 const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
   console.log(TranscriptionData);
@@ -61,7 +61,7 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
         <Box className="TranscriptViewerBox" width="83vw">
           <div>
             <video
-              style={{ width: "50vw", minWidth: "500px" }}
+              style={{ width: "50vw", minWidth: "500px", borderRadius: "5px" }}
               src={TranscriptionData.playUrl}
               controls
             ></video>
