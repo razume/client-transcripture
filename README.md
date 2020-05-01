@@ -3,6 +3,8 @@ https://trello.com/b/FrUwnrJ4/dank-tank-capstone
 
 ## GitHub backend
 https://github.com/tannerbyers/TranBackend
+run ### `npm run start:dev` on Windows to run development build
+and ### `npm run start:dev:linux` on Mac 
 
 ## Prod
 https://client-transcipture.herokuapp.com/
