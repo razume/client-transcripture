@@ -31,13 +31,12 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
           flexDirection="row"
           alignItems="center"
           justifyContent="space-between"
-          width="80%"
+          width="100%"
         >
-          <Button>
+          <Button onClick={() => setFileSelect(false)}>
             <img
               className="BackButton"
               src={BackImg}
-              onClick={() => setFileSelect(false)}
               style={{ height: "40px" }}
             ></img>
           </Button>
@@ -46,7 +45,6 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
             File name: <strong>{TranscriptionData.name}</strong>
           </h3>
           <Button
-            style={{ padding: "1rem" }}
             onClick={() =>
               ExportTranscript(TranscriptionData.transcriptionFilePath)
             }
@@ -54,9 +52,6 @@ const TranscriptionViewer = ({ TranscriptionData, setFileSelect, posturl }) => {
             <img
               style={{
                 height: "40px",
-                paddingBottom: "8px",
-                marginRight: "3rem",
-                marginLeft: "3rem",
               }}
               src={require("../media/export_icon.svg")}
             ></img>
