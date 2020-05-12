@@ -43,15 +43,22 @@ function Transcripts({
   const requestMeetings = () => {
     if (!window.sessionStorage.getItem("meetingsRequested")) {
       setIsRequesting(true);
-      axios.get(posturl + "/api/recordings").then(() => {
-        axios
-          .get(posturl + "/api/db/transcripts")
-          .then((res) => {
-            setTranscripts(res.data);
-          })
-          .then(() => setIsRequesting(false))
-          .then(() => window.sessionStorage.setItem("meetingsRequested", true));
-      });
+      axios
+        .get(posturl + "/api/recordings")
+        .then((response) =>
+          console.log("Status from /api/recordings", response.status)
+        )
+        .then(() => {
+          axios
+            .get(posturl + "/api/db/transcripts")
+            .then((res) => {
+              setTranscripts(res.data);
+            })
+            .then(() => setIsRequesting(false))
+            .then(() =>
+              window.sessionStorage.setItem("meetingsRequested", true)
+            );
+        });
 
       axios
         .get(posturl + "/api/db/transcripts")
