@@ -129,7 +129,8 @@ const TranscriptsReport = ({ transcripts }) => {
             }}
           >
             {" "}
-            Average Meeting Length <h4> {averageMeetingDuration()} Minutes </h4>
+            Average Meeting Length{" "}
+            <h4> {averageMeetingDuration().toFixed(2)} Minutes </h4>
           </Card>
           <Card
             style={{
