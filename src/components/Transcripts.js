@@ -102,7 +102,7 @@ function Transcripts({
             width: "10rem",
           }}
         >
-          <h2>Welcome {user.first_name ? `, ${user.first_name}!` : ""}</h2>
+          <h2>Welcome{user.first_name ? `, ${user.first_name}!` : ""}</h2>
           <Create
             directory={directory}
             folders={folders}
