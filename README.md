@@ -12,6 +12,11 @@ https://client-transcipture.herokuapp.com/
 
 ![frontpage](https://user-images.githubusercontent.com/38148103/82002595-2adbd980-962c-11ea-9c78-ae1acc580675.PNG)
 
+Logged IN: 
+![logged in](https://user-images.githubusercontent.com/38148103/82003249-e5201080-962d-11ea-99b2-ec2810dffeed.PNG)
+![remit viewer](https://user-images.githubusercontent.com/38148103/82003278-f2d59600-962d-11ea-8c9d-9a24283ec5a2.PNG)
+![reports](https://user-images.githubusercontent.com/38148103/82003279-f406c300-962d-11ea-800f-97f7238a3e81.PNG)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -24,20 +29,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+#### Uses Zoom OAuth for Login and Verification 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
+![oauth](https://user-images.githubusercontent.com/38148103/82003216-ca4d9c00-962d-11ea-92da-1bef25d3609a.PNG)
 
