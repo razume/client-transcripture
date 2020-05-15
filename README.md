@@ -1,4 +1,14 @@
-## Prod
+# Scribe
+This project is the front end code for our Zoom Transcription Service which we call Scribe.
+Scribe allows users to access their recorded zoom meetings and view their transcriptions as well as view reports for the users' meetings (average meeting length, number of meetings, percentage of filler words used)
+
+## Tech Stack
+ReactJs, Material UI, ExpressJS, NodeJs, MongoDB
+
+## Process 
+Scribe uses Zoom's OAuth process for Authentication and then pulls the users' Zoom meetings from Zoom's API and encodes them from .m4a files into .wav files and then sends them to the Google Speech to text api where it is transcribed and returned. We then write the transcription to a file and this is put in a MongoDB Database. The front end uses ReactJS and updates the frontend state based on updates to the MongoDB Database.
+
+### Prod
 https://client-transcipture.herokuapp.com/
 
 ![frontpage](https://user-images.githubusercontent.com/38148103/82002595-2adbd980-962c-11ea-9c78-ae1acc580675.PNG)
