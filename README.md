@@ -1,12 +1,3 @@
-## Trello
-https://trello.com/b/FrUwnrJ4/dank-tank-capstone
-
-## GitHub backend
-https://github.com/tannerbyers/TranBackend
-
-run `npm run start:dev` on Windows to run development build
-and `npm run start:dev:linux` on Mac 
-
 ## Prod
 https://client-transcipture.herokuapp.com/
 
@@ -17,10 +8,11 @@ Logged IN:
 ![remit viewer](https://user-images.githubusercontent.com/38148103/82003278-f2d59600-962d-11ea-8c9d-9a24283ec5a2.PNG)
 ![reports](https://user-images.githubusercontent.com/38148103/82003279-f406c300-962d-11ea-800f-97f7238a3e81.PNG)
 
-## Available Scripts
 
-In the project directory, you can run:
+## Trello
+https://trello.com/b/FrUwnrJ4/dank-tank-capstone
 
+## To Start
 ### `npm start`
 
 Runs the app in the development mode.<br />
@@ -28,6 +20,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
+
+## GitHub backend
+https://github.com/tannerbyers/TranBackend
+
+run `npm run start:dev` on Windows to run development build
+and `npm run start:dev:linux` on Mac 
 
 #### Uses Zoom OAuth for Login and Verification 
 
